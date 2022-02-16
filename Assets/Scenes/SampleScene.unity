@@ -231,9 +231,11 @@ GameObject:
   m_Component:
   - component: {fileID: 699907144}
   - component: {fileID: 699907143}
-  - component: {fileID: 699907145}
   - component: {fileID: 699907146}
   - component: {fileID: 699907147}
+  - component: {fileID: 699907145}
+  - component: {fileID: 699907148}
+  - component: {fileID: 699907149}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -369,6 +371,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8, y: 3.5}
   m_EdgeRadius: 0
+--- !u!114 &699907148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699907142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6490f05b0de93f944b0be232b2073311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &699907149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699907142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4e7fd586432f64cae10427784629d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFindRange: 50
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1147233162
 GameObject:
   m_ObjectHideFlags: 0
