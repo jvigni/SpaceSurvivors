@@ -1,39 +1,10 @@
 using UnityEngine;
 
-public abstract class Weapon
-{
-    Cooldown cooldown;
-
-    public Weapon(float cooldownSecs)
-    {
-        cooldown = new Cooldown(cooldownSecs);
-        cooldown.OnFinish += Trigger;
-    }
-
-    public void TurnOn()
-    {
-        cooldown.Start(true);
-    }
-
-    public abstract void Trigger();
-}
-
-public class LaserTurret : Weapon
-{
-    public LaserTurret() : base(10f) { }
-
-    public override void Trigger()
-    {
-        //var target = Provider.Spaceship.GetNearestEnemy();
-    }
-}
-
+//https://www.youtube.com/watch?v=DVHcOS1E5OQ
 public class Spaceship : MonoBehaviour
 {
-    //https://www.youtube.com/watch?v=DVHcOS1E5OQ
     [SerializeField] float accelerationFactor, turnFactor, driftFactor, maxSpeed;
     float accelerationInput, steeringInput, rotationAngle, velocityVsUp;
-     
     Rigidbody2D rb;
 
     private void Awake()

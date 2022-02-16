@@ -1,11 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-public class Provider
-{
-    public static Spaceship Spaceship;
-}
-
 public class App : MonoBehaviour
 {
     [SerializeField] Enemy enemyPrefab;
