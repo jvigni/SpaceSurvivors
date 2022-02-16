@@ -1,6 +1,4 @@
 using Unity.Entities;
-using Unity.Transforms;
-using Unity.Rendering;
 
 public class EnemySystem : SystemBase
 {
