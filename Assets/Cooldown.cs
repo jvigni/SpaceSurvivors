@@ -8,38 +8,42 @@ public class Cooldown
     int tickTimeInMiliseconds = 100;
     float countdown, originalCooldown;
     Thread cooldownThread;
-    
+
+    public float Status // Number between 1 (100% loaded / OnFinish invoked) and 0 (0% loaded. Need to wait the full lenght)
+    {
+        get { return 1 - (countdown / originalCooldown); }
+    }
+
+    public bool IsReady
+    {
+        get { return countdown <= 0; }
+    }
+
     public Cooldown(float seconds)
     {
         originalCooldown = seconds;
     }
 
-    public bool IsReady()
-    {
-        return countdown <= 0;
-    }
-
     public void Start(bool repeat = false)
     {
-        if (cooldownThread != null)
-            cooldownThread.Abort();
-
         countdown = originalCooldown;
-
         cooldownThread = new Thread(async () =>
         {
-            while (countdown > 0)
+            do
             {
-                await Task.Delay(tickTimeInMiliseconds);
-                countdown -= tickTimeInMiliseconds / 1000f;
-            }
-            OnFinish?.Invoke();
+                while (countdown > 0)
+                {
+                    await Task.Delay(tickTimeInMiliseconds);
+                    countdown -= tickTimeInMiliseconds / 1000f;
+                }
+                OnFinish?.Invoke();
+            } while (repeat);
         });
         cooldownThread.Start();
     }
 
-    public float Status() //Number between 1(Full CD) and 0(Ready to use)
+    public void Stop()
     {
-        return countdown * 100 / originalCooldown;
+        cooldownThread.Abort();
     }
 }
