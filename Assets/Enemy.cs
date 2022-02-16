@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         HandleMovement();
-        FaceSpaceship();
-        //HandleRotation(); //Al ser naves topDown, no hace falta
+        HandleRotation();
+        //FaceSpaceship();
     }
 
     void HandleMovement()

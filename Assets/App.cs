@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Provider
@@ -12,8 +13,21 @@ public class App : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < 1000; i++)
-            SpawnEnemy();
+        StartCoroutine(SpawnEnemies());
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        while (true)
+        {
+            var waitSeconds = Random.Range(.5f, 2f);
+            var wfs = new WaitForSecondsRealtime(waitSeconds);
+            yield return wfs;
+
+            var amountToSpawn = Random.Range(4, 10);
+            for (int i = 0; i < amountToSpawn; i++)
+                SpawnEnemy();
+        }
     }
 
     void SpawnEnemy()
@@ -23,8 +37,9 @@ public class App : MonoBehaviour
         float angle = Random.Range(0, 359);
         float x = Mathf.Cos(angle) * radius;
         float y = Mathf.Sin(angle) * radius;
+        var spawnPos = Provider.Spaceship.transform.position + new Vector3(x, y);
 
-        Enemy enemyInstance = Instantiate(enemyPrefab, new Vector2(x,y), Quaternion.identity);
+        Enemy enemyInstance = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
         enemyInstance.Init(selectedEnemyBlueprint);
     }
 }
