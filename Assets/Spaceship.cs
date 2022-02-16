@@ -1,5 +1,33 @@
 using UnityEngine;
 
+public abstract class Weapon
+{
+    Cooldown cooldown;
+
+    public Weapon(float cooldownSecs)
+    {
+        cooldown = new Cooldown(cooldownSecs);
+        cooldown.OnFinish += Trigger;
+    }
+
+    public void TurnOn()
+    {
+        cooldown.Start(true);
+    }
+
+    public abstract void Trigger();
+}
+
+public class LaserTurret : Weapon
+{
+    public LaserTurret() : base(10f) { }
+
+    public override void Trigger()
+    {
+        //var target = Provider.Spaceship.GetNearestEnemy();
+    }
+}
+
 public class Spaceship : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=DVHcOS1E5OQ
