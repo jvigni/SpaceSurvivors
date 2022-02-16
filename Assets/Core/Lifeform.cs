@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Lifeform : MonoBehaviour
@@ -14,8 +15,16 @@ public class Lifeform : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         actualHealth -= damage;
+        StartCoroutine(HitColorChange());
         if (actualHealth <= 0)
             HandleDeath();
+    }
+
+    IEnumerator HitColorChange()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     void HandleDeath()
