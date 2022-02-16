@@ -11,6 +11,7 @@ public class Spaceship : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        Provider.Spaceship = this;
     }
 
     private void Update()
