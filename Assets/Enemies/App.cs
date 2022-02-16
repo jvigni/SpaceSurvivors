@@ -1,5 +1,7 @@
-using Unity.Entities;
 using UnityEngine;
+using Unity.Entities;
+using Unity.Rendering;
+using Unity.Transforms;
 
 public class Provider
 {
@@ -19,8 +21,16 @@ public class App : MonoBehaviour
 
     void SpawnEnemy()
     {
-        EntityArchetype archetype = entityManager.CreateArchetype(typeof(EnemyData));
+    }
+
+    /*
+    void SpawnEnemy()
+    {
+        EntityArchetype archetype = entityManager.CreateArchetype(
+            typeof(EnemyData),
+            typeof(RenderMesh),
+            typeof(LocalToWorld));
         Entity entity = entityManager.CreateEntity(archetype);
         entityManager.SetComponentData(entity, new EnemyData { hitpoints = 69 });
-    }
+    }*/
 }
