@@ -9,6 +9,10 @@ public class App : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
+
+        var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
+        weaponsManager.LoadWeapon(new LaserTurretWeapon());
+        weaponsManager.TurnWeaponsOn();
     }
 
     IEnumerator SpawnEnemies()
