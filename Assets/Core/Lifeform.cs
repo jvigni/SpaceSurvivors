@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Lifeform : MonoBehaviour
 {
-    public Action OnDeath;
-    float actualHealth;
+    public event Action OnDeath;
+    [SerializeField] float actualHealth;
 
     public void Init(float maxHealth)
     {
@@ -29,7 +29,7 @@ public class Lifeform : MonoBehaviour
 
     void HandleDeath()
     {
-        OnDeath.Invoke();
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }

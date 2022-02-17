@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6490f05b0de93f944b0be232b2073311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualHealth: 100
 --- !u!114 &699907149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4e7fd586432f64cae10427784629d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFindRange: 50
+  targetFindRange: 25
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

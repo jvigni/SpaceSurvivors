@@ -1,10 +1,11 @@
 ﻿public class LaserTurretWeapon : Weapon
 {
-    public LaserTurretWeapon() : base(.3f) { }
+    public LaserTurretWeapon() : base(.5f) { }
 
     public override void Trigger()
     {
         Lifeform enemy = Provider.Spaceship.NearestEnemy;
-        enemy.ReceiveDamage(1f);
+        if(enemy != null)
+            enemy.ReceiveDamage(10f);
     }
 }

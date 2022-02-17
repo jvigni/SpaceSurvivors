@@ -1,16 +1,10 @@
 ﻿public abstract class Weapon
 {
-    Cooldown cooldown;
+    public float CooldownSecs { get; }
 
     public Weapon(float cooldownSecs)
     {
-        cooldown = new Cooldown(cooldownSecs);
-        cooldown.OnFinish += Trigger;
-    }
-
-    public void TurnOn()
-    {
-        cooldown.Start(true);
+        CooldownSecs = cooldownSecs;
     }
 
     public abstract void Trigger();
