@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e6dbcde7e39054b9030710dba074db, type: 3}
   m_Name: Alien1
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 5
   dmgInfo:
     Amount: 1
   speed: 1

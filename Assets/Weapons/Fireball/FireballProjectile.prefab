@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeIntensity: 2
   dmgInfo:
-    Amount: 50
+    Amount: 10
   trayParticlesPrefab: {fileID: 198157609410178438, guid: ef7835b5a2688cd4ba5aed9fb543bae9, type: 3}
   explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
   explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}

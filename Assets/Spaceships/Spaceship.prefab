@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualHealth: 10
-  healthBar: {fileID: 0}
 --- !u!114 &866610050959316180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902103084942a6a4b8d8b08abe431e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsPrefab: []
+  weaponsPrefab:
+  - {fileID: 6685730990808239974, guid: 26913ac064c7ac14bb0fef12f707d583, type: 3}
 --- !u!212 &4873600667489546880
 SpriteRenderer:
   m_ObjectHideFlags: 0
