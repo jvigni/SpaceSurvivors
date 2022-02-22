@@ -24,4 +24,21 @@ public class Utils
             material.color = newColor;
         }
     }
+
+    public static GameObject FindNearest(Vector2 point, float radius, LayerMask targetLayer)
+    {
+        GameObject nearestCandidate = null;
+        float shortestDistance = float.PositiveInfinity;
+        var nearColliders = Physics2D.OverlapCircleAll(point, radius, targetLayer);
+        foreach (Collider2D candidate in nearColliders)
+        {
+            float distance = Vector2.Distance(point, candidate.gameObject.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                nearestCandidate = candidate.gameObject;
+            }
+        }
+        return nearestCandidate;
+    }
 }

@@ -19,25 +19,7 @@ public class Targeting : MonoBehaviour
         while (true)
         {
             yield return wfs;
-            UpdateTarget();
+            Target = Utils.FindNearest(transform.position, findRange, targetLayer);
         }
-    }
-
-    public void UpdateTarget()
-    {
-        float shortestDistance = Mathf.Infinity;
-        GameObject result = null;
-        var nearColliders = Physics2D.OverlapCircleAll(transform.position, findRange, targetLayer);
-
-        foreach (Collider2D colider in nearColliders)
-        {
-            float distance = Vector3.Distance(transform.position, colider.transform.position);
-            if (distance < shortestDistance)
-            {
-                shortestDistance = distance;
-                result = colider.gameObject;
-            }
-        }
-        Target = result;
     }
 }

@@ -419,7 +419,6 @@ MonoBehaviour:
   spaceshipPrefab: {fileID: 866610050959316191, guid: 85344c8dfaed3a149a53a80301e17760, type: 3}
   enemyPrefab: {fileID: 710760765818020199, guid: 8578f9a98b35434488c26294d2df4c13, type: 3}
   selectedEnemyBlueprint: {fileID: 11400000, guid: e52694927bdd45f49a6739f32669611b, type: 2}
-  healthBarPrefab: {fileID: 7121355779655654419, guid: fd440f64299f03b4a80af90285326095, type: 3}
 --- !u!4 &1147233164
 Transform:
   m_ObjectHideFlags: 0
