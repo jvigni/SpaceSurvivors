@@ -7,7 +7,7 @@ public class App : MonoBehaviour
     [SerializeField] GameObject spaceshipPrefab;
     [SerializeField] Enemy enemyPrefab;
     [SerializeField] EnemyBlueprint selectedEnemyBlueprint;
-
+    
     private void Start()
     {
         InstantiateSpaceship();

@@ -4,6 +4,7 @@
 public class EnemyBlueprint : ScriptableObject
 {
     public float maxHealth;
+    public DmgInfo dmgInfo;
     public float speed;
     public AnimData idleAnim;
     public AnimData deathAnim;

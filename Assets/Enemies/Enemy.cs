@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     EnemyBlueprint blueprint;
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
+    bool canAttack = true;
 
     private void Start()
     {
@@ -43,5 +45,21 @@ public class Enemy : MonoBehaviour
         Vector2 direction = Provider.Spaceship.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rigidBody.rotation = angle;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && canAttack)
+        {
+            collision.gameObject.GetComponent<Lifeform>().ReceiveDamage(blueprint.dmgInfo);
+            canAttack = false;
+            StartCoroutine(ResetAttackCooldown());
+        }
+    }
+
+    IEnumerator ResetAttackCooldown()
+    {
+        yield return new WaitForSecondsRealtime(.5f);
+        canAttack = true;
     }
 }
