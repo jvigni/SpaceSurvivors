@@ -1,11 +1,13 @@
-﻿public class LaserTurretWeapon : Weapon
+﻿using UnityEngine;
+
+public class LaserTurretWeapon : Weapon
 {
     public LaserTurretWeapon() : base() { }
 
     public override void Trigger()
     {
-        Lifeform enemy = Provider.Spaceship.NearestEnemy;
+        GameObject enemy = Provider.Spaceship.GetComponent<Targeting>().Target;
         if(enemy != null)
-            enemy.ReceiveDamage(new DmgInfo(10));
+            enemy.GetComponent<Lifeform>().ReceiveDamage(new DmgInfo(10));
     }
 }

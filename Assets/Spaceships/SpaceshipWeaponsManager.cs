@@ -18,6 +18,7 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     {
         var instance = Instantiate(weapon);
         instance.Init(GetComponent<Lifeform>());
+        instance.transform.parent = transform;
         weaponsInstances.Add(instance);
     }
 

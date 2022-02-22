@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class App : MonoBehaviour
 {
+    [SerializeField] Camera camera;
+    [SerializeField] GameObject spaceshipPrefab;
     [SerializeField] Enemy enemyPrefab;
     [SerializeField] EnemyBlueprint selectedEnemyBlueprint;
 
     private void Start()
     {
+        InstantiateSpaceship();
+
         StartCoroutine(SpawnEnemies());
 
         var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
         weaponsManager.TurnAutoshootOn();
+    }
+
+    void InstantiateSpaceship()
+    {
+        var spaceship = Instantiate(spaceshipPrefab); 
+        Provider.Spaceship = spaceship;
+        camera.GetComponent<CameraFollow>().SetTarget(spaceship);
     }
 
     IEnumerator SpawnEnemies()

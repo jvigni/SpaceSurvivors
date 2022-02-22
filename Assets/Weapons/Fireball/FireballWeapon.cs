@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 
-public class FireballWeapon : Weapon {
-
+public class FireballWeapon : Weapon 
+{
     [SerializeField] Projectile projectile;
     [SerializeField] float throwForce;
     
     public override void Trigger()
     {
-        Vector2 actorPosition = owner.transform.position;
-        var target = Provider.Spaceship.NearestEnemy;
-        if (target == null) return;
-        Vector2 direction = (target.transform.position - owner.transform.position).normalized;
-        Vector2 spawnPosition = actorPosition;
+        var target = Provider.Spaceship.GetComponent<Targeting>().Target;
+        if (target == null) 
+            return;
 
-        Projectile projectileInstance = projectile.BuildNew(spawnPosition, owner);
+        Projectile projectileInstance = projectile.BuildNew(owner.transform.position, owner);
+        Vector2 direction = (target.transform.position - owner.transform.position).normalized;
         projectileInstance.Push(direction, throwForce);
     }
 }

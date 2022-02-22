@@ -1,4 +1,6 @@
-﻿public class Provider
+﻿using UnityEngine;
+
+public class Provider
 {
-    public static Spaceship Spaceship;
+    public static GameObject Spaceship;
 }

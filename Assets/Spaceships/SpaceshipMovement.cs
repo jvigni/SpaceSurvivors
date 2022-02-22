@@ -2,22 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //https://www.youtube.com/watch?v=DVHcOS1E5OQ
-public class Spaceship : MonoBehaviour
+public class SpaceshipMovement : MonoBehaviour
 {
     [SerializeField] float accelerationFactor, turnFactor, driftFactor, maxSpeed;
     float accelerationInput, steeringInput, rotationAngle, velocityVsUp;
     Rigidbody2D rb;
-    Targeting targeting;
-
-    public Lifeform NearestEnemy {
-        get { return targeting.GetNearestEnemy(); }
-    }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        targeting = GetComponent<Targeting>();
-        Provider.Spaceship = this;
     }
 
     private void Update()
