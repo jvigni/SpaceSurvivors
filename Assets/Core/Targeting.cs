@@ -38,7 +38,6 @@ public class Targeting : MonoBehaviour
                 result = colider.gameObject;
             }
         }
-        Debug.Log("Updating target..");
         Target = result;
     }
 }
