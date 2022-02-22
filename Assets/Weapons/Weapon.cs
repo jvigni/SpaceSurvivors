@@ -4,44 +4,29 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    float cooldownSecs;
+    [SerializeField] float cooldownSecs;
     float cooldownCountdown;
     Coroutine autoshootingRoutine;
     protected Lifeform owner;
 
-    public Weapon(float cooldownSecs)
+    public void ResetCooldown()
     {
-        this.cooldownSecs = cooldownSecs;
+        cooldownCountdown = cooldownSecs;
     }
 
-    public void StartAutoshooting()
+    public void ReduceCooldown(float seconds)
     {
-        autoshootingRoutine = StartCoroutine(ShootRoutine());
+        cooldownCountdown -= seconds;
+        if (cooldownCountdown <= 0)
+        {
+            Trigger();
+            cooldownCountdown = cooldownSecs;
+        }
     }
 
     public void Init(Lifeform owner)
     {
         this.owner = owner;
-    }
-
-    public void StopAutoshooting()
-    {
-        StopCoroutine(autoshootingRoutine);
-    }
-
-    IEnumerator ShootRoutine()
-    {
-        var wfs = new WaitForSecondsRealtime(1);
-        while (true)
-        {
-            while (cooldownCountdown > 0)
-            {
-                yield return wfs;
-                cooldownCountdown -= 1;
-            }
-            Trigger();
-            cooldownCountdown = cooldownSecs;
-        }
     }
 
     public abstract void Trigger();

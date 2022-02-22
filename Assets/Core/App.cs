@@ -11,7 +11,6 @@ public class App : MonoBehaviour
         StartCoroutine(SpawnEnemies());
 
         var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
-        weaponsManager.SpawnWeapon(new LaserTurretWeapon());
         weaponsManager.TurnAutoshootOn();
     }
 

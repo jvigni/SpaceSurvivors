@@ -1,6 +1,9 @@
-﻿public class DmgInfo
+﻿using System;
+
+[Serializable]
+public class DmgInfo
 {
-    public float Amount { get; }
+    public float Amount;
 
     public DmgInfo(float amount)
     {

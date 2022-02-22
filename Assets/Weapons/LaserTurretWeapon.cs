@@ -1,6 +1,6 @@
 ﻿public class LaserTurretWeapon : Weapon
 {
-    public LaserTurretWeapon() : base(.5f) { }
+    public LaserTurretWeapon() : base() { }
 
     public override void Trigger()
     {
