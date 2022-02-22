@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   findRange: 500
-  refreshTimeInSec: 0.5
+  refreshTimeInSec: 0.1
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

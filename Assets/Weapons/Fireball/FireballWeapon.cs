@@ -11,6 +11,7 @@ public class FireballWeapon : Weapon
         if (target == null) 
             return;
 
+        Debug.Log("2");
         Projectile projectileInstance = projectile.BuildNew(owner.transform.position, owner);
         Vector2 direction = (target.transform.position - owner.transform.position).normalized;
         projectileInstance.Push(direction, throwForce);

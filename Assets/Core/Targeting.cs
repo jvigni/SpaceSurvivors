@@ -6,22 +6,11 @@ public class Targeting : MonoBehaviour
     [SerializeField] float findRange;
     [SerializeField] float refreshTimeInSec;
     [SerializeField] LayerMask targetLayer;
-
-    public GameObject Target
-    {
-        get
-        {
-            if (Target == null)
-                UpdateTarget();
-
-            return Target;
-        }
-        private set { Target = value; }
-    }
+    public GameObject Target { get; private set; }
 
     private void Start()
     {
-        RefreshTargetCoroutine();
+        StartCoroutine(RefreshTargetCoroutine());
     }
 
     IEnumerator RefreshTargetCoroutine()
@@ -49,6 +38,7 @@ public class Targeting : MonoBehaviour
                 result = colider.gameObject;
             }
         }
+        Debug.Log("Updating target..");
         Target = result;
     }
 }
