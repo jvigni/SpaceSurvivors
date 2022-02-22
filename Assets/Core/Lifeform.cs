@@ -11,10 +11,10 @@ public class Lifeform : MonoBehaviour
     {
         actualHealth = maxHealth;
     }
-
-    public void ReceiveDamage(float damage)
+    
+    public void ReceiveDamage(DmgInfo dmgInfo)
     {
-        actualHealth -= damage;
+        actualHealth -= dmgInfo.Amount;
         StartCoroutine(HitColorChange());
         if (actualHealth <= 0)
             HandleDeath();

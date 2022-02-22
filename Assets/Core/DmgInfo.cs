@@ -1,9 +1,9 @@
 ﻿public class DmgInfo
 {
-    float amount;
+    public float Amount { get; }
 
     public DmgInfo(float amount)
     {
-        this.amount = amount;
+        Amount = amount;
     }
 }

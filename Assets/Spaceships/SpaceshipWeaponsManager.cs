@@ -1,38 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceshipWeaponsManager : MonoBehaviour
 {
-    List<Weapon> weapons = new List<Weapon>();
-    List<Coroutine> weaponsRoutines = new List<Coroutine>();
+    [SerializeField] List<Weapon> weaponsPrefab;
+    List<Weapon> weaponsInstances = new List<Weapon>();
 
-    public void LoadWeapon(Weapon weapon)
+    private void Start()
     {
-        weapons.Add(weapon);
+        foreach (Weapon weapon in weaponsPrefab)
+            SpawnWeapon(weapon);
     }
 
-    public void TurnWeaponsOn()
+    public void SpawnWeapon(Weapon weapon)
     {
-        foreach (Weapon weapon in weapons)
-        {
-            var routine = StartCoroutine(ShootWeaponRoutine(weapon));
-            weaponsRoutines.Add(routine);
-        }
+        var instance = Instantiate(weapon);
+        instance.Init(GetComponent<Lifeform>());
+        weaponsInstances.Add(instance);
     }
 
-    public void TurnWeaponsOff()
+    public void TurnAutoshootOn()
     {
-        foreach (Coroutine routine in weaponsRoutines)
-            StopCoroutine(routine);
+        foreach (Weapon weapon in weaponsInstances)
+            weapon.StartAutoshooting();
     }
 
-    IEnumerator ShootWeaponRoutine(Weapon weapon)
+    public void TurnAutoshootOff()
     {
-        while (true)
-        {
-            yield return new WaitForSecondsRealtime(weapon.CooldownSecs);
-            weapon.Trigger();
-        }
+        foreach (Weapon weapon in weaponsInstances)
+            weapon.StopAutoshooting();
     }
 }

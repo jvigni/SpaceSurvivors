@@ -6,6 +6,6 @@
     {
         Lifeform enemy = Provider.Spaceship.NearestEnemy;
         if(enemy != null)
-            enemy.ReceiveDamage(10f);
+            enemy.ReceiveDamage(new DmgInfo(10));
     }
 }
