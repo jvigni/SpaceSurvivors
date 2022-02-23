@@ -15,10 +15,9 @@ public class Projectile : MonoBehaviour
     Lifeform creator;
     ParticleSystem trayParticlesInstance;
 
-    public Projectile BuildNew(Vector2 spawnPos, Lifeform creator)
+    public Projectile BuildNew(Lifeform creator, Vector2 spawnPos, Quaternion rotation)
     {
-        var instance = Instantiate(this);
-        instance.transform.position = spawnPos;
+        var instance = Instantiate(this, spawnPos, rotation);
         instance.creator = creator;
         return instance;
     }

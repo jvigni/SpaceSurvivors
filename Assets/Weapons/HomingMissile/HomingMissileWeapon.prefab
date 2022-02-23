@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1647812332211612
+--- !u!1 &1855145371723630846
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4459380144326716}
-  - component: {fileID: 6649235608353715964}
+  - component: {fileID: 1855145371723630844}
+  - component: {fileID: 1855145371723630847}
   m_Layer: 0
-  m_Name: ArcaneMissilesSpell
+  m_Name: HomingMissileWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4459380144326716
+--- !u!4 &1855145371723630844
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647812332211612}
+  m_GameObject: {fileID: 1855145371723630846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.4715717, y: -3.5320761, z: -1.4852626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6649235608353715964
+--- !u!114 &1855145371723630847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647812332211612}
+  m_GameObject: {fileID: 1855145371723630846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8cf53f4dd421c4f88f58886b4808c6, type: 3}
+  m_Script: {fileID: 11500000, guid: e7d5f7153c13f6e4d907fa28855ec979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiereTarget: 1
-  cooldownInSeconds: 0
-  manaCost: 0.25
-  secondsBetweenShoots: 0.15
-  projectile: {fileID: 114970987670342634, guid: f7afde95ad58c6e439d431441a7371d8, type: 3}
+  cooldownSecs: 0.2
+  projectile: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
