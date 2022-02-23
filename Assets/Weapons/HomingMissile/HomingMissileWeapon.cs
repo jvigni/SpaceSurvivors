@@ -6,6 +6,12 @@ public class HomingMissileWeapon : Weapon
 
     public override void Trigger()
     {
+        ShootMissile();
+        ShootMissile();
+    }
+
+    void ShootMissile()
+    {
         Quaternion rotation = Random.rotation;
         rotation.y = 0f;
         rotation.x = 0f;

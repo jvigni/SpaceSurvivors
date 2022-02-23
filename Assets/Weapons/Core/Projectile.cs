@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] bool pierce; //Does not destroy on hit
     [SerializeField] float shakeIntensity = 0f;
     [SerializeField] DmgInfo dmgInfo;
     [SerializeField] ParticleSystem trayParticlesPrefab;
@@ -85,11 +86,6 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D2(Collider2D col)
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D col)
     {
         if ((creator.tag.Equals("Enemy") && col.gameObject.tag.Equals("Player"))
@@ -102,7 +98,8 @@ public class Projectile : MonoBehaviour
                 //if(onHitEffects != null)
                 //    onHitEffects.ForEach(effect => lifeForm.ApplyEffect(effect, creator));
             }
-            Destroy();
+            if(!pierce)
+                Destroy();
         }
 
         if (col.gameObject.tag.Equals("Environment"))

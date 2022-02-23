@@ -33,7 +33,7 @@ public class App : MonoBehaviour
             var wfs = new WaitForSecondsRealtime(waitSeconds);
             yield return wfs;
 
-            var amountToSpawn = Random.Range(2, 8);
+            var amountToSpawn = Random.Range(1, 4);
             for (int i = 0; i < amountToSpawn; i++)
                 SpawnEnemy();
         }
