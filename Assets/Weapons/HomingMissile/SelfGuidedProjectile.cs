@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SelfGuidedProjectile : MonoBehaviour {
-
+public class SelfGuidedProjectile : MonoBehaviour 
+{
     [SerializeField] float movementSpeed;
     [SerializeField] float turningSpeed;
     [SerializeField] float findRange;
@@ -18,7 +18,7 @@ public class SelfGuidedProjectile : MonoBehaviour {
 
     IEnumerator UpdateTargetRoutine()
     {
-        var wfs = new WaitForSecondsRealtime(.2f);
+        var wfs = new WaitForSecondsRealtime(.1f);
         while (true)
         {
             yield return wfs;

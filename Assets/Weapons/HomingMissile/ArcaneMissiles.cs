@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
-
-public class ArcaneMissiles : Spell {
+/*
+public class ArcaneMissiles : Weapon {
     
     [SerializeField] float secondsBetweenShoots;
     [SerializeField] Projectile projectile;
 
     bool active;
-    Cooldown cooldownBetweenShoots;
+    Cooldown3 cooldownBetweenShoots;
     Resource mana;
     Animator animator;
 
     void Start()
     {
-        mana = owner.GetComponent<Caster>().Mana;
-        animator = owner.GetComponent<Animator>();
-        cooldownBetweenShoots = new Cooldown(secondsBetweenShoots);
     }
 
     void Update()
@@ -55,4 +52,4 @@ public class ArcaneMissiles : Spell {
         Vector2 spawnPosition = actor.transform.position;
         projectile.build(spawnPosition, rotation, actor);
     }
-}
+}*/
