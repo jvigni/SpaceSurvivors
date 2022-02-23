@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198037824723107740}
   - component: {fileID: 199529828619794028}
   m_Layer: 0
-  m_Name: ArcaneMissileExplosionFX
+  m_Name: HomingMissileExplosionFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6685730990808239973}
   - component: {fileID: 6685730990808239974}
   m_Layer: 0
-  m_Name: FireballWeapon
+  m_Name: CannonWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cb9d41394f55f4b8df99fed503d6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownSecs: 1
+  cooldownSecs: 2
   projectile: {fileID: 2319871057651355956, guid: a0aa73c91841b614daecabee602b56f6, type: 3}
-  throwForce: 10
+  throwForce: 14

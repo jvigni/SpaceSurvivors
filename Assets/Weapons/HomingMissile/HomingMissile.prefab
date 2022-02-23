@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bdd4140684f334cb0931fa4a45586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  turningSpeed: 1
-  findRange: 50
+  movementSpeed: 8
+  turningSpeed: 0.5
+  findRange: 20
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeIntensity: 2
   dmgInfo:
-    Amount: 1
+    Amount: 5
   trayParticlesPrefab: {fileID: 198157609410178438, guid: b1dbc666019d1c6458f178a05cbfe64f, type: 3}
   explosionParticlesPrefab: {fileID: 198037824723107740, guid: 39ba3fd0042ede6468106e9b47915d56, type: 3}
   explosionSFX: {fileID: 8300000, guid: bdeae835cf196f8488bdb24ed068614e, type: 3}

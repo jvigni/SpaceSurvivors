@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FireballWeapon : Weapon 
+public class CannonWeapon : Weapon 
 {
     [SerializeField] Projectile projectile;
     [SerializeField] float throwForce;

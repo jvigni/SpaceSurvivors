@@ -27,14 +27,20 @@ public class SelfGuidedProjectile : MonoBehaviour
     }
 
     void Update () {
-        // Rotation
-        float turning = Vector3.Dot(transform.right, target.transform.position - transform.position);
-        if(turning > 0) transform.Rotate(new Vector3(0, 0, -turningSpeed));
-        if(turning < 0) transform.Rotate(new Vector3(0, 0, turningSpeed));
+
+        if (target != null)
+            RotateTowardsTarget();
 
         //Movement
         //float finalSpeed = movementSpeed + Random.Range(-movementSpeedError, movementSpeedError);
         Vector3 movement = transform.up * movementSpeed * Time.fixedDeltaTime;
         rb.MovePosition(transform.position + movement);
+    }
+
+    void RotateTowardsTarget()
+    {
+        float turning = Vector3.Dot(transform.right, target.transform.position - transform.position);
+        if (turning > 0) transform.Rotate(new Vector3(0, 0, -turningSpeed));
+        if (turning < 0) transform.Rotate(new Vector3(0, 0, turningSpeed));
     }
 }
