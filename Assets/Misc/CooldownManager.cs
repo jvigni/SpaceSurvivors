@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Cooldown
 {
+    public event Action<Cooldown> OnFinish;
     float countdown, originalSeconds;
-    event Action OnFinish;
 
     public Cooldown(float seconds)
     {
@@ -27,7 +27,7 @@ public class Cooldown
     public void Tick(float seconds)
     {
         countdown -= seconds;
-        if (countdown <= 0) OnFinish?.Invoke();
+        if (countdown <= 0) OnFinish?.Invoke(this);
     }
 }
 
@@ -35,11 +35,10 @@ public class CooldownManager : MonoBehaviour
 {
     float tickTimeSec = .01f;
     List<Cooldown> cooldowns = new List<Cooldown>();
-    public static CooldownManager Instance;
 
     private void Awake()
     {
-        Instance = this;    
+        Provider.CooldownManager = this;
     }
 
     private void Start()
@@ -47,11 +46,17 @@ public class CooldownManager : MonoBehaviour
         StartCoroutine(ManageCooldowns());
     }
 
-    public static Cooldown Start(float seconds)
+    public Cooldown Start(float seconds)
     {
         var cooldown = new Cooldown(seconds);
-        Instance.cooldowns.Add(cooldown);
+        cooldown.OnFinish += cooldown => OnCooldownFinish(cooldown);
+        cooldowns.Add(cooldown);
         return cooldown;
+    }
+
+    void OnCooldownFinish(Cooldown cooldown)
+    {
+        cooldowns.Remove(cooldown);
     }
 
     IEnumerator ManageCooldowns()
@@ -60,7 +65,7 @@ public class CooldownManager : MonoBehaviour
         while (true)
         {
             yield return wfs;
-            foreach (Cooldown cooldown in cooldowns)
+            foreach (Cooldown cooldown in cooldowns.ToArray())
                 cooldown.Tick(tickTimeSec);
         }
     }    

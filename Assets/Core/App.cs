@@ -15,7 +15,7 @@ public class App : MonoBehaviour
         StartCoroutine(SpawnEnemies());
 
         var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
-        weaponsManager.TurnAutoshootOn();
+        weaponsManager.StartAutoshooting();
     }
 
     void InstantiateSpaceship()

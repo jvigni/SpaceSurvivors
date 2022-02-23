@@ -1,32 +1,40 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] float cooldownSecs;
-    float cooldownCountdown;
-    Coroutine autoshootingRoutine;
     protected Lifeform owner;
-
-    public void ResetCooldown()
-    {
-        cooldownCountdown = cooldownSecs;
-    }
-
-    public void ReduceCooldown(float seconds)
-    {
-        cooldownCountdown -= seconds;
-        if (cooldownCountdown <= 0)
-        {
-            Trigger();
-            cooldownCountdown = cooldownSecs;
-        }
-    }
+    bool autoShooting;
 
     public void Init(Lifeform owner)
     {
         this.owner = owner;
+    }
+
+    public void StartAutoshooting()
+    {
+        autoShooting = true;
+        StartCooldown();
+    }
+
+    public void StopAutoshooting()
+    {
+        autoShooting = false;
+    }
+
+    void StartCooldown()
+    {
+        var cooldown = Provider.CooldownManager.Start(cooldownSecs);
+        cooldown.OnFinish += _ => OnCooldownFinished();
+    }
+
+    void OnCooldownFinished()
+    {
+        if (!autoShooting)
+            return;
+
+        Trigger();
+        StartCooldown();
     }
 
     public abstract void Trigger();

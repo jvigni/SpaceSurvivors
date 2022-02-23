@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceshipWeaponsManager : MonoBehaviour
 {
     [SerializeField] List<Weapon> weaponsPrefab;
     List<Weapon> weaponsInstances = new List<Weapon>();
-    Coroutine autoshootingRoutine;
 
-    private void Start()
+    private void Awake()
     {
         foreach (Weapon weapon in weaponsPrefab)
             SpawnWeapon(weapon);
@@ -22,25 +20,15 @@ public class SpaceshipWeaponsManager : MonoBehaviour
         weaponsInstances.Add(instance);
     }
 
-    public void TurnAutoshootOn()
+    public void StartAutoshooting()
     {
-        var autoshootingRoutine = StartCoroutine(AutoshootingRoutine());
+        foreach (Weapon weapon in weaponsInstances)
+            weapon.StartAutoshooting();
     }
 
-    public void TurnAutoshootOff()
+    public void StopAutoshooting()
     {
-        StopCoroutine(autoshootingRoutine);
-    }
-
-    IEnumerator AutoshootingRoutine()
-    {
-        var time = .01f;
-        var wfs = new WaitForSecondsRealtime(time);
-        while (true)
-        {
-            yield return wfs;
-            foreach (Weapon weapon in weaponsInstances)
-                weapon.ReduceCooldown(time);
-        }
+        foreach (Weapon weapon in weaponsInstances)
+            weapon.StopAutoshooting();
     }
 }
