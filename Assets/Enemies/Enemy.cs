@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] Gem gemPrefab;
     EnemyBlueprint blueprint;
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
@@ -17,8 +18,16 @@ public class Enemy : MonoBehaviour
     public void Init(EnemyBlueprint blueprint)
     {
         this.blueprint = blueprint;
-        GetComponent<Lifeform>().Init(blueprint.maxHealth);
         GetComponent<AnimatorLite>().Play(blueprint.idleAnim, true);
+        var lifeform = GetComponent<Lifeform>();
+        lifeform.Init(blueprint.maxHealth);
+        lifeform.OnDeath += OnDeath;
+    }
+
+    void OnDeath()
+    {
+        var gem = Instantiate(gemPrefab, transform.position, Quaternion.identity);
+        gem.Init(blueprint.experience);
     }
 
     private void Update()

@@ -4,6 +4,7 @@ public class Gem : MonoBehaviour
 {
     [SerializeField] float gemMovementSpeed;
     [SerializeField] float minDistanceToConsume;
+    int experience;
     bool picked;
 
     public void GetPicked()
@@ -13,7 +14,7 @@ public class Gem : MonoBehaviour
 
     void Consume()
     {
-        Debug.Log("+1");
+        Provider.Spaceship.GetComponent<SpaceshipLevelSystem>().GainExperience(experience);
         Destroy(gameObject);
     }
 
@@ -22,6 +23,7 @@ public class Gem : MonoBehaviour
         if (!picked) 
             return;
 
+        gemMovementSpeed += .1f;
         var directionToShip = Provider.Spaceship.transform.position - transform.position;
         var movement = gemMovementSpeed * directionToShip * Time.deltaTime;
         transform.position += movement;
@@ -29,5 +31,10 @@ public class Gem : MonoBehaviour
         var distanceToShip = Vector2.Distance(Provider.Spaceship.transform.position, transform.position);
         if (distanceToShip <= minDistanceToConsume)
             Consume();
+    }
+
+    public void Init(int experience)
+    {
+        this.experience = experience;
     }
 }

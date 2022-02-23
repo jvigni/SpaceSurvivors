@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 866610050959316180}
   - component: {fileID: 866610050959316183}
   - component: {fileID: 4873600667489546880}
+  - component: {fileID: -4797146516089841815}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Player
@@ -197,6 +198,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4797146516089841815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866610050959316191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84779ff3a95db3141856b980c03b8244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7716051985103017890
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039574aa87667c24899c2b75c427af57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gemMovementSpeed: 2
 --- !u!58 &7836676445456580452
 CircleCollider2D:
   m_ObjectHideFlags: 0
