@@ -7,6 +7,7 @@ public class App : MonoBehaviour
     [SerializeField] GameObject spaceship;
     [SerializeField] Enemy enemyPrefab;
     [SerializeField] EnemyBlueprint selectedEnemyBlueprint;
+    [SerializeField] GameObject alien1;
 
     private void Awake()
     {
@@ -46,7 +47,8 @@ public class App : MonoBehaviour
         float y = Mathf.Sin(angle) * radius;
         var spawnPos = Provider.Spaceship.transform.position + new Vector3(x, y);
 
-        Enemy enemyInstance = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        enemyInstance.Init(selectedEnemyBlueprint);
+        //Enemy enemyInstance = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        //enemyInstance.Init(selectedEnemyBlueprint);
+        Instantiate(alien1, spawnPos, Quaternion.identity);
     }
 }
