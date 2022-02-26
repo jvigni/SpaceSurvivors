@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 0
   pierce: 0
   shakeIntensity: 2
   dmgInfo:

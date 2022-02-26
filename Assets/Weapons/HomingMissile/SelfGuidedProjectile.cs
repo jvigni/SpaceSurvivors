@@ -21,8 +21,8 @@ public class SelfGuidedProjectile : MonoBehaviour
         var wfs = new WaitForSecondsRealtime(.1f);
         while (true)
         {
-            yield return wfs;
             target = Utils.FindNearest(transform.position, findRange, targetLayer);
+            yield return wfs;
         }
     }
 

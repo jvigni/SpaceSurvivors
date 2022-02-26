@@ -89,7 +89,7 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.Equals(creator)) return;
+        if (!col.gameObject.tag.Equals("Enemy")) return;
         if (col.gameObject.tag.Equals("Environment")) Destroy();
 
         if (radius > 0)
@@ -109,6 +109,7 @@ public class Projectile : MonoBehaviour
 
     void HandleSingleTargetCollision(GameObject target)
     {
-        target.GetComponent<Lifeform>().ReceiveDamage(dmgInfo);
+        var lifeform = target.GetComponent<Lifeform>();
+        if(lifeform) lifeform.ReceiveDamage(dmgInfo);
     }
 }
