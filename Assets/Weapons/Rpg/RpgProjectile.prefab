@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 10
   pierce: 0
   shakeIntensity: 0
   dmgInfo:
-    Amount: 0
+    Amount: 2
   trayParticlesPrefab: {fileID: 198157609410178438, guid: ef7835b5a2688cd4ba5aed9fb543bae9, type: 3}
   explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
   explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}
@@ -85,12 +86,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
 --- !u!212 &9036793002349354930
 SpriteRenderer:
   m_ObjectHideFlags: 0

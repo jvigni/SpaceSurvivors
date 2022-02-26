@@ -199,6 +199,7 @@ MonoBehaviour:
   weaponsPrefab:
   - {fileID: 6685730990808239974, guid: 26913ac064c7ac14bb0fef12f707d583, type: 3}
   - {fileID: 1855145371723630847, guid: 291aaa168067ef64c813241f88091818, type: 3}
+  - {fileID: 1373763369117981302, guid: 12ddcd116d6e7994d94ce8c64112e0b8, type: 3}
 --- !u!114 &-4797146516089841815
 MonoBehaviour:
   m_ObjectHideFlags: 0

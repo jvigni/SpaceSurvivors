@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float radius = 0f;
+    [SerializeField] float AOERadius = 0f;
     [SerializeField] bool pierce; //Does not destroy on hit
     [SerializeField] float shakeIntensity = 0f;
     [SerializeField] DmgInfo dmgInfo;
@@ -92,7 +92,7 @@ public class Projectile : MonoBehaviour
         if (!col.gameObject.tag.Equals("Enemy")) return;
         if (col.gameObject.tag.Equals("Environment")) Destroy();
 
-        if (radius > 0)
+        if (AOERadius > 0)
             HandleAOECollision(col.gameObject);
         else
             HandleSingleTargetCollision(col.gameObject);
@@ -102,7 +102,7 @@ public class Projectile : MonoBehaviour
 
     void HandleAOECollision(GameObject target)
     {
-        var nearColliders = Physics2D.OverlapCircleAll(target.transform.position, radius);
+        var nearColliders = Physics2D.OverlapCircleAll(target.transform.position, AOERadius);
         foreach (Collider2D candidate in nearColliders)
             HandleSingleTargetCollision(candidate.gameObject);
     }
