@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c1448cbd6fe7944aea768277e8018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownSecs: 3
+  cooldownSecs: 2
   projectile: {fileID: 2319871057651355956, guid: 0ae274400bed34f4d8cf754d5578e89b, type: 3}
-  throwForce: 10
+  throwForce: 19

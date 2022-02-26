@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FlamethrowerWeapon : Weapon
 {
+    [SerializeField] float firingSeconds;
     [SerializeField] DmgInfo damage;
     [SerializeField] Effect burningEffect;
     bool firing;
@@ -48,7 +49,7 @@ public class FlamethrowerWeapon : Weapon
         GetComponent<ParticleSystem>().Play();
         GetComponent<PolygonCollider2D>().enabled = true;
 
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(firingSeconds);
 
         firing = false;
         GetComponent<ParticleSystem>().Stop();

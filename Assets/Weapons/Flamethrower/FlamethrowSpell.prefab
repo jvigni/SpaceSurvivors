@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownSecs: 4
+  firingSeconds: 2.5
   damage:
     Amount: 1
 --- !u!60 &3075269615429616611

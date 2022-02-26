@@ -12,7 +12,8 @@ public class RpgWeapon : Weapon
             return;
 
         Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
-        Vector2 direction = owner.transform.up;
+        projectileInstance.RotateTowards(target.transform);
+        Vector2 direction = (target.transform.position - owner.transform.position).normalized;
         projectileInstance.Push(direction, throwForce);
     }
 }

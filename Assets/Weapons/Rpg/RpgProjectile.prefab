@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2319871057651355978}
-  - component: {fileID: 2319871057651355956}
-  - component: {fileID: -5977029864656496068}
-  - component: {fileID: 3306309814065384578}
   - component: {fileID: 9036793002349354930}
+  - component: {fileID: -5977029864656496068}
+  - component: {fileID: 1228615759395012194}
+  - component: {fileID: 2319871057651355956}
   m_Layer: 0
   m_Name: RpgProjectile
   m_TagString: Untagged
@@ -34,64 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2319871057651355956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319871057651355959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 10
-  pierce: 0
-  shakeIntensity: 0
-  dmgInfo:
-    Amount: 2
-  trayParticlesPrefab: {fileID: 198157609410178438, guid: ef7835b5a2688cd4ba5aed9fb543bae9, type: 3}
-  explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
-  explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}
-  traySFX: {fileID: 8300000, guid: 661fb45fc50ada941bf8cc5924641fc3, type: 3}
---- !u!50 &-5977029864656496068
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319871057651355959}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &3306309814065384578
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319871057651355959}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!212 &9036793002349354930
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -131,9 +73,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.18396229, b: 0.18396229, a: 1}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: 21300000, guid: 3747842ae113dca4285f799790958d49, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -143,3 +85,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &-5977029864656496068
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319871057651355959}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1228615759395012194
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319871057651355959}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0034965873, y: 0.006992966}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4615386, y: 2.4615386}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5454427, y: 0.30766422}
+  m_EdgeRadius: 0
+--- !u!114 &2319871057651355956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319871057651355959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AOERadius: 3
+  pierce: 0
+  shakeIntensity: 0
+  dmgInfo:
+    Amount: 1
+  trayParticlesPrefab: {fileID: 0}
+  explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}
+  traySFX: {fileID: 8300000, guid: 661fb45fc50ada941bf8cc5924641fc3, type: 3}

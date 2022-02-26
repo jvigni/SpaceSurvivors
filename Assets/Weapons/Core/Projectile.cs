@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,13 @@ public class Projectile : MonoBehaviour
     public void Push(Vector2 direction, float force)
     {
         GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    public void RotateTowards(Transform target)
+    {
+        Vector2 direction = target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        GetComponent<Rigidbody2D>().rotation = angle;
     }
 
     void Start()
@@ -73,7 +81,7 @@ public class Projectile : MonoBehaviour
             ParticleSystem explosionParticlesInstance = Instantiate(explosionParticlesPrefab);
             explosionParticlesInstance.transform.position = transform.position;
             explosionParticlesInstance.transform.parent = null;
-            Destroy(explosionParticlesInstance.gameObject);
+            //Destroy(explosionParticlesInstance.gameObject);
         }
 
         // Shake: [OK - No quiero efectos ahora]
