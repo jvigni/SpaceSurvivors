@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1228615759395012194}
   - component: {fileID: 2319871057651355956}
   m_Layer: 0
-  m_Name: RpgProjectile
+  m_Name: DumDumProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 3747842ae113dca4285f799790958d49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e8507e4f3507ba43b99f2cab8c27051, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,18 +119,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0034965873, y: 0.006992966}
+  m_Offset: {x: 0.01765281, y: 0.22507483}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4615386, y: 2.4615386}
+    oldSize: {x: 3.2, y: 3.2}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5454427, y: 0.30766422}
+  m_Size: {x: 0.6932844, y: 0.54323447}
   m_EdgeRadius: 0
 --- !u!114 &2319871057651355956
 MonoBehaviour:
@@ -144,12 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AOERadius: 3
+  AOERadius: 0
   pierce: 0
   shakeIntensity: 0
   dmgInfo:
-    Amount: 100
+    Amount: 5
   trayParticlesPrefab: {fileID: 0}
-  explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
+  explosionParticlesPrefab: {fileID: 0}
   explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}
   traySFX: {fileID: 8300000, guid: 661fb45fc50ada941bf8cc5924641fc3, type: 3}
