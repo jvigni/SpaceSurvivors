@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] float radius = 0f;
     [SerializeField] bool pierce; //Does not destroy on hit
     [SerializeField] float shakeIntensity = 0f;
     [SerializeField] DmgInfo dmgInfo;
@@ -13,10 +14,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] AudioClip traySFX;
     [SerializeField] List<Effect> onHitEffects;
 
-    Lifeform creator;
+    GameObject creator;
     ParticleSystem trayParticlesInstance;
 
-    public Projectile BuildNew(Lifeform creator, Vector2 spawnPos, Quaternion rotation)
+    public Projectile BuildNew(GameObject creator, Vector2 spawnPos, Quaternion rotation)
     {
         var instance = Instantiate(this, spawnPos, rotation);
         instance.creator = creator;
@@ -88,21 +89,26 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if ((creator.tag.Equals("Enemy") && col.gameObject.tag.Equals("Player"))
-            || (creator.tag.Equals("Player") && col.gameObject.tag.Equals("Enemy")))
-        {
-            Lifeform lifeForm = col.gameObject.GetComponent<Lifeform>();
-            if (lifeForm)
-            {
-                lifeForm.ReceiveDamage(dmgInfo);
-                //if(onHitEffects != null)
-                //    onHitEffects.ForEach(effect => lifeForm.ApplyEffect(effect, creator));
-            }
-            if(!pierce)
-                Destroy();
-        }
+        if (col.gameObject.Equals(creator)) return;
+        if (col.gameObject.tag.Equals("Environment")) Destroy();
 
-        if (col.gameObject.tag.Equals("Environment"))
-            Destroy();
+        if (radius > 0)
+            HandleAOECollision(col.gameObject);
+        else
+            HandleSingleTargetCollision(col.gameObject);
+
+        if(!pierce) Destroy();
+    }
+
+    void HandleAOECollision(GameObject target)
+    {
+        var nearColliders = Physics2D.OverlapCircleAll(target.transform.position, radius);
+        foreach (Collider2D candidate in nearColliders)
+            HandleSingleTargetCollision(candidate.gameObject);
+    }
+
+    void HandleSingleTargetCollision(GameObject target)
+    {
+        target.GetComponent<Lifeform>().ReceiveDamage(dmgInfo);
     }
 }

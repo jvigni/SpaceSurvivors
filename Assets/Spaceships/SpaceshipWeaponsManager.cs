@@ -15,7 +15,7 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     public void SpawnWeapon(Weapon weapon)
     {
         var instance = Instantiate(weapon);
-        instance.Init(GetComponent<Lifeform>());
+        instance.Init(gameObject);
         instance.transform.parent = transform;
         weaponsInstances.Add(instance);
     }

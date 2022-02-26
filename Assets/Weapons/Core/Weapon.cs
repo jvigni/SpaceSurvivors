@@ -3,10 +3,12 @@
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] float cooldownSecs;
-    protected Lifeform owner;
+    protected GameObject owner;
     bool autoShooting;
 
-    public void Init(Lifeform owner)
+    protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
+
+    public void Init(GameObject owner)
     {
         this.owner = owner;
     }

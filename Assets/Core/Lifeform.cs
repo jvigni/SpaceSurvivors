@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Lifeform : MonoBehaviour
 {
-    public event Action OnDeath;
-    [SerializeField] float actualHealth;
+    public event System.Action OnDeath;
+    [SerializeField] float startingHealth = 100000f;
+    public float ActualHealth { get; private set; }
+
+    private void Awake()
+    {
+        ActualHealth = startingHealth;     
+    }
 
     public void Init(float maxHealth)
     {
-        actualHealth = maxHealth;
+        startingHealth = maxHealth;
+        ActualHealth = maxHealth;
     }
     
     public void ReceiveDamage(DmgInfo dmgInfo)
     {
-        actualHealth -= dmgInfo.Amount;
+        startingHealth -= dmgInfo.Amount;
         StartCoroutine(HitColorChange());
-        if (actualHealth <= 0)
+        if (startingHealth <= 0)
             HandleDeath();
     }
 

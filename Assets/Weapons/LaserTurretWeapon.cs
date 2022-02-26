@@ -6,8 +6,8 @@ public class LaserTurretWeapon : Weapon
 
     public override void Trigger()
     {
-        GameObject enemy = Provider.Spaceship.GetComponent<Targeting>().Target;
-        if(enemy != null)
-            enemy.GetComponent<Lifeform>().ReceiveDamage(new DmgInfo(10));
+        var target = NearestTarget;
+        if (target != null)
+            target.GetComponent<Lifeform>().ReceiveDamage(new DmgInfo(10));
     }
 }

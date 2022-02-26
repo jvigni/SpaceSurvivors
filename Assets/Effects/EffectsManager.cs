@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-public class EffectsManager
+public class EffectsManager : MonoBehaviour
 {
     public event Action<Effect> OnEffectApplied;
     public event Action<Effect> OnEffectRemoved;
