@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985f6a4009bce9a4ab6d1fbdb131661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownSecs: 4
+  cooldownSecs: 6
   firingSeconds: 2.5
   damage:
     Amount: 1
