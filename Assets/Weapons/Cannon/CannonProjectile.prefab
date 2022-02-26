@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AOERadius: 2
+  AOERadius: 0
   pierce: 0
-  shakeIntensity: 2
+  shakeIntensity: 0
   dmgInfo:
     Amount: 10
   trayParticlesPrefab: {fileID: 198157609410178438, guid: ef7835b5a2688cd4ba5aed9fb543bae9, type: 3}

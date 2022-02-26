@@ -459,10 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1d15c91045982439705d55d3e6796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
   spaceship: {fileID: 868403116172499844}
-  enemyPrefab: {fileID: 710760765818020199, guid: 8578f9a98b35434488c26294d2df4c13, type: 3}
-  selectedEnemyBlueprint: {fileID: 11400000, guid: e52694927bdd45f49a6739f32669611b, type: 2}
   alien1: {fileID: 1865938427723653078, guid: 549c042ccb9649e4ab2d5b6c55c956cf, type: 3}
 --- !u!4 &1147233164
 Transform:

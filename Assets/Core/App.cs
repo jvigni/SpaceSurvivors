@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class App : MonoBehaviour
 {
-    [SerializeField] Camera camera;
     [SerializeField] GameObject spaceship;
-    [SerializeField] Enemy enemyPrefab;
-    [SerializeField] EnemyBlueprint selectedEnemyBlueprint;
     [SerializeField] GameObject alien1;
 
     private void Awake()
@@ -16,8 +13,6 @@ public class App : MonoBehaviour
 
     private void Start()
     {
-        //InstantiateSpaceship();
-
         StartCoroutine(SpawnEnemies());
 
         var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
