@@ -15,7 +15,7 @@ public class Targeting : MonoBehaviour
 
     IEnumerator RefreshTargetCoroutine()
     {
-        var wfs = new WaitForSecondsRealtime(refreshTimeInSec);
+        var wfs = new WaitForSeconds(refreshTimeInSec);
         while (true)
         {
             yield return wfs;

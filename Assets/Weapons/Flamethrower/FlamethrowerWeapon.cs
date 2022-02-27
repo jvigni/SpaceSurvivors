@@ -49,7 +49,7 @@ public class FlamethrowerWeapon : Weapon
         GetComponent<ParticleSystem>().Play();
         GetComponent<PolygonCollider2D>().enabled = true;
 
-        yield return new WaitForSecondsRealtime(firingSeconds);
+        yield return new WaitForSeconds(firingSeconds);
 
         firing = false;
         GetComponent<ParticleSystem>().Stop();

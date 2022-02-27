@@ -8,7 +8,7 @@ public class UpgradesManager : MonoBehaviour
     {
         UpgradeData[] selectedUpgrades;
         //TODO Logica para seleccionar que upgrades mostrar. PLACEHOLDER:
-        Provider.UpgradesView.Show(upgradesData[0], upgradesData[1], upgradesData[2]);
+        Provider.UpgradesView.Show(upgradesData);
         Provider.App.PauseGameplay();
     }
 

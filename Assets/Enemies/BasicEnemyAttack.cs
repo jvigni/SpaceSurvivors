@@ -22,7 +22,7 @@ public class BasicEnemyAttack : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSeconds(.5f);
         canAttack = true;
     }
 }

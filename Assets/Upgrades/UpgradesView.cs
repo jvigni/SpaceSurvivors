@@ -3,19 +3,44 @@ using UnityEngine;
 
 public class UpgradesView : MonoBehaviour
 {
-    [SerializeField] UpgradeView view1;
-    [SerializeField] UpgradeView view2;
-    [SerializeField] UpgradeView view3;
+    [SerializeField] UpgradeView[] upgradeViews;
     public event Action<Upgrade> OnUpgradePicked;
+    int selectedIndex;
 
-    public void Show(UpgradeData data1, UpgradeData data2, UpgradeData data3)
+    public void Show(UpgradeData[] upgradeData)
     {
+        for (int i = 0; i < upgradeViews.Length; i++)
+            upgradeViews[i].Init(upgradeData[i]);
+
+        Select(0);
         gameObject.SetActive(true);
-        //TODO
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow) && selectedIndex != 2)
+            Select(selectedIndex + 1);
+        
+        if (Input.GetKeyDown(KeyCode.UpArrow) && selectedIndex != 0)
+            Select(selectedIndex - 1);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Upgrade);
+            Hide();
+        }
+    }
+
+    void Select(int index)
+    {
+        upgradeViews[selectedIndex].SetSelected(false);
+
+        selectedIndex = index;
+        upgradeViews[index].SetSelected(true);
     }
 }

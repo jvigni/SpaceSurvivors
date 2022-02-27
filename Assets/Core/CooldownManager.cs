@@ -61,7 +61,7 @@ public class CooldownManager : MonoBehaviour
 
     IEnumerator ManageCooldowns()
     {
-        var wfs = new WaitForSecondsRealtime(tickTimeSec);
+        var wfs = new WaitForSeconds(tickTimeSec);
         while (true)
         {
             yield return wfs;

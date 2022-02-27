@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
 
     IEnumerator SelfDestroy()
     {
-        yield return new WaitForSecondsRealtime(4);
+        yield return new WaitForSeconds(4);
         Destroy();
     }
 

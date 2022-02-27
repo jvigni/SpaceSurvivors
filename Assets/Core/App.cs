@@ -9,12 +9,12 @@ public class App : MonoBehaviour
 
     public void UnpauseGameplay()
     {
-        throw new System.NotImplementedException();
+        Time.timeScale = 1;
     }
 
     public void PauseGameplay()
     {
-        throw new System.NotImplementedException();
+        Time.timeScale = 0;
     }
 
     private void Awake()
@@ -43,7 +43,7 @@ public class App : MonoBehaviour
         while (true)
         {
             var waitSeconds = Random.Range(.5f, 2f);
-            var wfs = new WaitForSecondsRealtime(waitSeconds);
+            var wfs = new WaitForSeconds(waitSeconds);
             yield return wfs;
 
             var amountToSpawn = Random.Range(6, 6);

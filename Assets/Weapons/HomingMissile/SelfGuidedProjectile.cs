@@ -18,7 +18,7 @@ public class SelfGuidedProjectile : MonoBehaviour
 
     IEnumerator UpdateTargetRoutine()
     {
-        var wfs = new WaitForSecondsRealtime(.1f);
+        var wfs = new WaitForSeconds(.1f);
         while (true)
         {
             target = Utils.FindNearest(transform.position, findRange, targetLayer);
