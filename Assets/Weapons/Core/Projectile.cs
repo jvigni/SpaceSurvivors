@@ -112,7 +112,8 @@ public class Projectile : MonoBehaviour
     {
         var nearColliders = Physics2D.OverlapCircleAll(target.transform.position, AOERadius);
         foreach (Collider2D candidate in nearColliders)
-            HandleSingleTargetCollision(candidate.gameObject);
+            if(candidate.tag.Equals("Enemy"))
+                HandleSingleTargetCollision(candidate.gameObject);
     }
 
     void HandleSingleTargetCollision(GameObject target)
