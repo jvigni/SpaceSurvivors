@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public enum Upgrade
 {
     Cannon_pierce,
-    Homming_DoubleShoot
+    Homming_DoubleShoot,
+    DumDum_TargetedAim
 }
 
 [CreateAssetMenu(fileName = "UpgradeData")]

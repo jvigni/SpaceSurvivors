@@ -7,8 +7,19 @@ public class App : MonoBehaviour
     [SerializeField] GameObject alien1;
     [SerializeField] UpgradesView upgradesView;
 
+    public void UnpauseGameplay()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void PauseGameplay()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Awake()
     {
+        Provider.App = this;
         Provider.Spaceship = spaceship;
         Provider.UpgradesView = upgradesView;
     }

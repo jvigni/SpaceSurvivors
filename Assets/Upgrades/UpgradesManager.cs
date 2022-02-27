@@ -9,21 +9,7 @@ public class UpgradesManager : MonoBehaviour
         UpgradeData[] selectedUpgrades;
         //TODO Logica para seleccionar que upgrades mostrar. PLACEHOLDER:
         Provider.UpgradesView.Show(upgradesData[0], upgradesData[1], upgradesData[2]);
-        PauseGameplay();
-    }
-
-    void PauseGameplay()
-    {
-        Provider.Spaceship.GetComponent<SpaceshipMovement>().enabled = false;
-        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().enabled = false;
-        Provider.Spaceship.GetComponent<Lifeform>().enabled = false;
-    }
-
-    void UnPauseGame()
-    {
-        Provider.Spaceship.GetComponent<SpaceshipMovement>().enabled = true;
-        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().enabled = true;
-        Provider.Spaceship.GetComponent<Lifeform>().enabled = true;
+        Provider.App.PauseGameplay();
     }
 
     private void Awake()
@@ -40,6 +26,6 @@ public class UpgradesManager : MonoBehaviour
     void OnUpgradePicked(Upgrade upgrade)
     {
         Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().AddUpgrade(upgrade);
-        UnPauseGame();
+        Provider.App.UnpauseGameplay();
     }
 }
