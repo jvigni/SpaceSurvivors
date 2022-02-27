@@ -26,6 +26,7 @@ public class App : MonoBehaviour
 
     private void Update()
     {
+        //TODO ONLY FOR TESTING
         if (Input.GetKeyDown(KeyCode.Q))
             Provider.UpgradesManager.StartNewUpgradeProcess();
     }

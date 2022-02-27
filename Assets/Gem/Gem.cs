@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour
 
     void Consume()
     {
-        Provider.Spaceship.GetComponent<SpaceshipLevelSystem>().GainExperience(experience);
+        Provider.XpBar.Increase(1);
         Destroy(gameObject);
     }
 
