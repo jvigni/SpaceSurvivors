@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 //https://www.youtube.com/watch?v=DVHcOS1E5OQ
@@ -8,6 +7,12 @@ public class SpaceshipMovement : MonoBehaviour
     float accelerationInput, steeringInput, rotationAngle, velocityVsUp;
     Rigidbody2D rb;
 
+    public void SetInputVector(Vector2 inputVector)
+    {
+        steeringInput = inputVector.x;
+        accelerationInput = inputVector.y;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,7 +20,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 inputVector = Vector2.zero;
+        Vector2 inputVector = Vector2.zero;        
         inputVector.x = Input.GetAxis("Horizontal");
         inputVector.y = Input.GetAxis("Vertical");
         SetInputVector(inputVector);
@@ -26,12 +31,6 @@ public class SpaceshipMovement : MonoBehaviour
         ApplyEngineForce();
         KillOrthogonalVelocity();
         ApplySteering();
-    }
-
-    public void SetInputVector(Vector2 inputVector)
-    {
-        steeringInput = inputVector.x;
-        accelerationInput = inputVector.y;
     }
 
     void ApplyEngineForce()

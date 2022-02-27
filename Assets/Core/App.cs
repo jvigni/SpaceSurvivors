@@ -5,10 +5,18 @@ public class App : MonoBehaviour
 {
     [SerializeField] GameObject spaceship;
     [SerializeField] GameObject alien1;
+    [SerializeField] UpgradesView upgradesView;
 
     private void Awake()
     {
-        Provider.Spaceship = spaceship;    
+        Provider.Spaceship = spaceship;
+        Provider.UpgradesView = upgradesView;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+            Provider.UpgradesManager.StartNewUpgradeProcess();
     }
 
     private void Start()
