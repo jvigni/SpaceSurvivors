@@ -10,8 +10,8 @@ public enum Upgrade
 [CreateAssetMenu(fileName = "UpgradeData")]
 public class UpgradeData : ScriptableObject
 {
-    [SerializeField] string title;
-    [SerializeField] string description;
-    [SerializeField] Sprite icon;
-    [SerializeField] Upgrade upgrade;
+    public string title;
+    public string description;
+    public Sprite icon;
+    public Upgrade upgrade;
 }

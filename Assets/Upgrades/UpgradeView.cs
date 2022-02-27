@@ -4,13 +4,17 @@ using UnityEngine.UI;
 
 public class UpgradeView : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI title;
-    [SerializeField] TextMeshProUGUI description;
-    [SerializeField] Image icon;
+    [SerializeField] TextMeshProUGUI titleTMP;
+    [SerializeField] TextMeshProUGUI descriptionTMP;
+    [SerializeField] Image iconIMG;
+    [SerializeField] GameObject selected;
     Upgrade upgrade;
 
-    public void Init(Upgrade upgrade)
+    public void Init(UpgradeData data)
     {
-        this.upgrade = upgrade;
+        upgrade = data.upgrade;
+        titleTMP.text = data.title;
+        descriptionTMP.text = data.description;
+        iconIMG.sprite = data.icon;
     }
 }

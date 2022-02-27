@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradesView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] UpgradeView view1;
+    [SerializeField] UpgradeView view2;
+    [SerializeField] UpgradeView view3;
+
+    private void Awake()
     {
-        
+        Provider.UpgradesView = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Show()
     {
-        
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    
+    public void Init(UpgradeData data1, UpgradeData data2, UpgradeData data3)
+    {
+
     }
 }
