@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
     {
         Vector2 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        GetComponent<Rigidbody2D>().rotation = angle;
+        GetComponent<Rigidbody2D>().rotation = angle -90;
     }
 
     void Start()

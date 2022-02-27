@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownSecs: 0.5
   offset: 0.25
-  projectile: {fileID: 2319871057651355956, guid: 0f5dc5578c199ce42b5a128167c624da, type: 3}
+  projectilePrefab: {fileID: 2319871057651355956, guid: 0f5dc5578c199ce42b5a128167c624da, type: 3}
   throwForce: 25

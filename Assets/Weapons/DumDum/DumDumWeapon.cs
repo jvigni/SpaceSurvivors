@@ -3,12 +3,12 @@ using UnityEngine;
 public class DumDumWeapon : Weapon
 {
     [SerializeField] float offset;
-    [SerializeField] Projectile projectile;
+    [SerializeField] Projectile projectilePrefab;
     [SerializeField] float throwForce;
 
     public override void Trigger()
     {
-        Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
+        Projectile projectileInstance = projectilePrefab.BuildNew(owner, owner.transform.position, Quaternion.identity);
         if (HasUpgrade(Upgrade.DumDum_TargetedAim))
             TargetedShooting(projectileInstance);
         else
