@@ -7,7 +7,8 @@ public class HomingMissileWeapon : Weapon
     public override void Trigger()
     {
         ShootMissile();
-        ShootMissile();
+        if(HasUpgrade(WeaponUpgrade.Homming_DoubleShoot))
+            ShootMissile();
     }
 
     void ShootMissile()

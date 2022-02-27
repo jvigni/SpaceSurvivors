@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public bool Pierce; //Does not destroy on hit
     [SerializeField] float AOERadius = 0f;
-    [SerializeField] bool pierce; //Does not destroy on hit
     [SerializeField] float shakeIntensity = 0f;
     [SerializeField] DmgInfo dmgInfo;
     [SerializeField] ParticleSystem trayParticlesPrefab;
@@ -105,7 +105,7 @@ public class Projectile : MonoBehaviour
         else
             HandleSingleTargetCollision(col.gameObject);
 
-        if(!pierce) Destroy();
+        if(!Pierce) Destroy();
     }
 
     void HandleAOECollision(GameObject target)

@@ -1,12 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public enum WeaponUpgrade
+{
+    Cannon_pierce,
+    Homming_DoubleShoot
+}
 
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] float cooldownSecs;
     protected GameObject owner;
     bool autoShooting;
-
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
+    protected bool HasUpgrade(WeaponUpgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().HasUpgrade(upgrade);
 
     public void Init(GameObject owner)
     {

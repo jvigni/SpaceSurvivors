@@ -13,7 +13,9 @@ public class CannonWeapon : Weapon
 
         Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
         Vector2 direction = (target.transform.position - owner.transform.position).normalized;
-        //Vector2 direction = owner.transform.up;
+        if (HasUpgrade(WeaponUpgrade.Cannon_pierce))
+            projectileInstance.Pierce = true;
+
         projectileInstance.Push(direction, throwForce);
     }
 }
