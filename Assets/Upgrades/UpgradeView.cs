@@ -8,11 +8,11 @@ public class UpgradeView : MonoBehaviour
     [SerializeField] TextMeshProUGUI descriptionTMP;
     [SerializeField] Image iconIMG;
     [SerializeField] GameObject selected;
-    public Upgrade Upgrade;
+    public UpgradeData Data;
 
     public void Init(UpgradeData data)
     {
-        Upgrade = data.upgrade;
+        Data = data;
         titleTMP.text = data.title;
         descriptionTMP.text = data.description;
         iconIMG.sprite = data.icon;

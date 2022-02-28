@@ -4,7 +4,7 @@ using UnityEngine;
 public class UpgradesView : MonoBehaviour
 {
     [SerializeField] UpgradeView[] upgradeViews;
-    public event Action<Upgrade> OnUpgradePicked;
+    public event Action<UpgradeData> OnUpgradePicked;
     int selectedIndex;
 
     public void Show(UpgradeData[] upgradeData)
@@ -23,15 +23,17 @@ public class UpgradesView : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow) && selectedIndex != 2)
-            Select(selectedIndex + 1);
-        
-        if (Input.GetKeyDown(KeyCode.UpArrow) && selectedIndex != 0)
+        var upInput = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
+        if (upInput && selectedIndex != 0)
             Select(selectedIndex - 1);
 
+        var downInput = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
+        if (downInput && selectedIndex != 2)
+            Select(selectedIndex + 1);
+        
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Upgrade);
+            OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Data);
             Hide();
         }
     }

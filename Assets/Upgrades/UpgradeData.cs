@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public enum Upgrade
 {
+    None,
     Cannon_pierce,
     Homming_DoubleShoot,
     DumDum_TargetedAim
@@ -15,4 +16,5 @@ public class UpgradeData : ScriptableObject
     public string description;
     public Sprite icon;
     public Upgrade upgrade;
+    public Weapon weaponPrefab;
 }

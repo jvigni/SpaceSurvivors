@@ -20,12 +20,16 @@ public class UpgradesManager : MonoBehaviour
     private void Start()
     {
         upgradesData = Resources.LoadAll<UpgradeData>("");
-        Provider.UpgradesView.OnUpgradePicked += upgrade => OnUpgradePicked(upgrade);
+        Provider.UpgradesView.OnUpgradePicked += data => OnUpgradePicked(data);
     }
 
-    void OnUpgradePicked(Upgrade upgrade)
+    void OnUpgradePicked(UpgradeData data)
     {
-        Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().AddUpgrade(upgrade);
+        if(data.upgrade != Upgrade.None)
+            Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().AddUpgrade(data.upgrade);
+        if (data.weaponPrefab != null)
+            Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().SpawnWeapon(data.weaponPrefab);
+
         Provider.App.UnpauseGameplay();
     }
 }

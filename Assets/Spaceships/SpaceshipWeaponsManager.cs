@@ -5,6 +5,7 @@ public class SpaceshipWeaponsManager : MonoBehaviour
 {
     [SerializeField] List<Weapon> weaponsPrefab;
     List<Weapon> weaponsInstances = new List<Weapon>();
+    bool autoshooting;
 
     private void Awake()
     {
@@ -14,20 +15,24 @@ public class SpaceshipWeaponsManager : MonoBehaviour
 
     public void SpawnWeapon(Weapon weapon)
     {
-        var instance = Instantiate(weapon);
+        var instance = Instantiate(weapon, transform);
         instance.Init(gameObject);
-        instance.transform.parent = transform;
         weaponsInstances.Add(instance);
+
+        if (autoshooting)
+            instance.StartAutoshooting();
     }
 
     public void StartAutoshooting()
     {
+        autoshooting = true;
         foreach (Weapon weapon in weaponsInstances)
             weapon.StartAutoshooting();
     }
 
     public void StopAutoshooting()
     {
+        autoshooting = false;
         foreach (Weapon weapon in weaponsInstances)
             weapon.StopAutoshooting();
     }
