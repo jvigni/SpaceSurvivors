@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: DumDum Automatic Turret
   description: DumDum nows aims automatically
-  icon: {fileID: 21300000, guid: 6e8507e4f3507ba43b99f2cab8c27051, type: 3}
+  icon: {fileID: 21300000, guid: a11df8840403437439d4ac9dca47680e, type: 3}
   upgrade: 3
   weaponPrefab: {fileID: 0}

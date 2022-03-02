@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Dual Launcher
   description: Shoots two Homming missiles at once
-  icon: {fileID: 21300000, guid: a81366997a2c8a34e93717e5c6a5e325, type: 3}
+  icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
   upgrade: 1
+  weaponPrefab: {fileID: 0}
