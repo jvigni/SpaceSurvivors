@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class UpgradeData2
 {
-    public string Title { get; private set; }
-    public string Description { get; private set; }
-    public string IconFileName { get; private set; }
-    public Upgrade Upgrade { get; private set; }
-    public Weapon WeaponPrefab { get; private set; }
+    public string Title;
+    public string Description;
+    public Sprite Icon;
+    public Upgrade Upgrade;
+    public Weapon WeaponPrefab;
 
-    public UpgradeData2(string title, string description, string iconFileName)
+
+    public UpgradeData2(string title, string description, Sprite icon)
     {
         Title = title;
         Description = description;
-        IconFileName = iconFileName;
+        Icon = icon;
     }
 
     public UpgradeData2 WithWeapon(Weapon weaponPrefab)
@@ -27,11 +28,20 @@ public class UpgradeData2
         Upgrade = upgrade; 
         return this;
     }
+
+    /*
+    public UpgradeData2 Requires(Weapon weapon)
+    {
+
+    }*/
 }
 
 public class UpgradesManager1 : MonoBehaviour
 {
     [SerializeField] Weapon flamethrower;
+    [SerializeField] Weapon hommingMissiles;
+    [SerializeField] Weapon rpg;
+    [SerializeField] Weapon dumdum;
 
     List<UpgradeData2> upgrades;
 
@@ -39,14 +49,26 @@ public class UpgradesManager1 : MonoBehaviour
     {
         LoadUpgrade("Flamethrower", "Burn them all!", "FlamethrowerIcon")
             .WithWeapon(flamethrower);
+
+        LoadUpgrade("RPG", "Rpg weapon", "RpgIcon")
+            .WithWeapon(rpg);
+
+        LoadUpgrade("Homming Missiles", "+Weapon", "HommingMissilesIcon")
+            .WithWeapon(hommingMissiles);
+        LoadUpgrade("Dual Launcher", "Shoots 2 Homming missiles at once", "HommingDualLauncherIcon")
+            .WithUpgrade(Upgrade.Homming_DoubleShoot);
+        
+        LoadUpgrade("DumDum", "Weapon", "DumDumIcon")
+            .WithWeapon(dumdum);
         LoadUpgrade("Automatic Turret", "DumDum now autotargets enemies", "DumDumAutoTurretIcon")
             .WithUpgrade(Upgrade.DumDum_TargetedAim);
-        LoadUpgrade("Dual Launcher", "Shoots 2 Homming missiles at once", "HommingDualLauncherIcon");
+        
     }
 
     UpgradeData2 LoadUpgrade(string title, string description, string iconFileName)
     {
-        var upgrade = new UpgradeData2(title, description, iconFileName);
+        var icon = Resources.Load<Sprite>(iconFileName);
+        var upgrade = new UpgradeData2(title, description, icon);
         upgrades.Add(upgrade);
         return upgrade;
     }
