@@ -8,7 +8,7 @@ public class UpgradeData2
     public Sprite Icon;
     public Upgrade Upgrade;
     public Weapon WeaponPrefab;
-
+    public Weapon RequiredWeapon;
 
     public UpgradeData2(string title, string description, Sprite icon)
     {
@@ -28,12 +28,6 @@ public class UpgradeData2
         Upgrade = upgrade; 
         return this;
     }
-
-    /*
-    public UpgradeData2 Requires(Weapon weapon)
-    {
-
-    }*/
 }
 
 public class UpgradesManager1 : MonoBehaviour

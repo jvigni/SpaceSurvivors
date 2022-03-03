@@ -31,7 +31,7 @@ public class UpgradesView : MonoBehaviour
         if (downInput && selectedIndex != 2)
             Select(selectedIndex + 1);
         
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.F))
         {
             OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Data);
             Hide();

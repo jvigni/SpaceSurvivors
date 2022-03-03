@@ -5,8 +5,14 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] float cooldownSecs;
     protected GameObject owner;
     bool autoShooting;
+    protected int level = 1;
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
+
+    protected abstract string Title { get; }
+    protected abstract string Description { get; }
+    public abstract Weapon NextUpgrade { get; }
+
 
     public void Init(GameObject owner)
     {
