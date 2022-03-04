@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradesView : MonoBehaviour
@@ -8,10 +7,11 @@ public class UpgradesView : MonoBehaviour
     public event Action<Upgrade> OnUpgradePicked;
     int selectedIndex;
 
-    public void Show(List<Upgrade> upgrade)
+    public void Show(Upgrade upgrade1, Upgrade upgrade2, Upgrade upgrade3)
     {
-        for (int i = 0; i < upgradeViews.Length; i++)
-            upgradeViews[i].Init(upgrade[i]);
+        upgradeViews[0].Init(upgrade1);
+        upgradeViews[1].Init(upgrade2);
+        upgradeViews[2].Init(upgrade3);
 
         Select(0);
         gameObject.SetActive(true);

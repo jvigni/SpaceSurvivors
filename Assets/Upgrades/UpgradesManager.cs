@@ -3,17 +3,6 @@ using UnityEngine;
 
 public class UpgradesManager : MonoBehaviour
 {
-    List<Upgrade> upgradesData;
-
-    public void StartNewUpgradeProcess()
-    {
-        LoadUpgrades();
-        Upgrade[] selectedUpgrades;
-        //TODO Logica para seleccionar que upgrades mostrar. PLACEHOLDER:
-        Provider.UpgradesView.Show(upgradesData);
-        Provider.App.PauseGameplay();
-    }
-
     private void Awake()
     {
         Provider.UpgradesManager = this;
@@ -21,13 +10,39 @@ public class UpgradesManager : MonoBehaviour
 
     private void Start()
     {
-        //upgradesData = Resources.LoadAll<UpgradeData>("");
         Provider.UpgradesView.OnUpgradePicked += data => OnUpgradePicked(data);
     }
 
-    void LoadUpgrades()
+    public void StartNewUpgradeProcess()
     {
-        upgradesData = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().GetAllWeaponsUpgrades();
+        List<Upgrade> posibleUpgrades = new List<Upgrade>();
+        posibleUpgrades.AddRange(GetLevelUpUpgrades());
+        posibleUpgrades.AddRange(GetNewWeaponsUpgrades());
+        posibleUpgrades.Shuffle();
+
+        Provider.UpgradesView.Show(posibleUpgrades[0], posibleUpgrades[1], posibleUpgrades[2]);
+        Provider.App.PauseGameplay();
+    }
+
+    List<Upgrade> GetLevelUpUpgrades()
+    {
+        List<Upgrade> upgrades = new List<Upgrade>();
+        var equipedWeapons = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().EquipedWeapons;
+        foreach (Weapon equipedWeapon in equipedWeapons)
+        {
+            if (!equipedWeapon.IsMaxLevel)
+                upgrades.Add(new WeaponLevelUpUpgrade(equipedWeapon));
+        }
+        return upgrades;
+    }
+
+    List<Upgrade> GetNewWeaponsUpgrades()
+    {
+        List<Upgrade> upgrades = new List<Upgrade>();
+        var unequipedWeapons = Provider.WeaponsManager.GetUnequipedWeapons();
+        foreach (Weapon unequipedWeapon in unequipedWeapons)
+            upgrades.Add(new NewWeaponUpgrade(unequipedWeapon));
+        return upgrades;
     }
 
     void OnUpgradePicked(Upgrade upgrade)
