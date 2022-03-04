@@ -13,17 +13,17 @@ public class SpaceshipWeaponsManager : MonoBehaviour
             SpawnWeapon(weapon);
     }
 
-    public List<UpgradeData> GetAllWeaponsUpgrades()
+    public void LevelUp(Weapon weapon)
     {
-        List<UpgradeData> upgrades = new List<UpgradeData>();
+        var index = weaponsInstances.IndexOf(weapon);
+        weaponsInstances[index].LevelUp();
+    }
+
+    public List<Upgrade> GetAllWeaponsUpgrades()
+    {
+        List<Upgrade> upgrades = new List<Upgrade>();
         foreach (Weapon weapon in weaponsInstances)
-        {
-            if(weapon.nextUpgrade != null)
-            {
-                var upgrade = new UpgradeData(weapon.Title, weapon.Desc, weapon.Icon, weaponPrefab: weapon);
-                upgrades.Add(upgrade);
-            }
-        }
+            upgrades.Add(new WeaponLevelUpUpgrade(weapon));
         return upgrades;
     }
 

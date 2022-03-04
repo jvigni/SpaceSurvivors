@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class UpgradesManager : MonoBehaviour
 {
-    List<UpgradeData> upgradesData;
+    List<Upgrade> upgradesData;
 
     public void StartNewUpgradeProcess() 
     {
-        UpgradeData[] selectedUpgrades;
+        Upgrade[] selectedUpgrades;
         //TODO Logica para seleccionar que upgrades mostrar. PLACEHOLDER:
         Provider.UpgradesView.Show(upgradesData);
         Provider.App.PauseGameplay();
@@ -25,13 +25,9 @@ public class UpgradesManager : MonoBehaviour
         Provider.UpgradesView.OnUpgradePicked += data => OnUpgradePicked(data);
     }
 
-    void OnUpgradePicked(UpgradeData data)
+    void OnUpgradePicked(Upgrade upgrade)
     {
-        if(data.upgrade != Upgrade.None)
-            Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().AddUpgrade(data.upgrade);
-        if (data.weaponPrefab != null)
-            Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().SpawnWeapon(data.weaponPrefab);
-
+        upgrade.Trigger();
         Provider.App.UnpauseGameplay();
     }
 }

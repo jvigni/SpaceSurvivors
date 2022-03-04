@@ -1,35 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeData2
-{
-    public string Title;
-    public string Description;
-    public Sprite Icon;
-    public Upgrade Upgrade;
-    public Weapon WeaponPrefab;
-    public Weapon RequiredWeapon;
-
-    public UpgradeData2(string title, string description, Sprite icon)
-    {
-        Title = title;
-        Description = description;
-        Icon = icon;
-    }
-
-    public UpgradeData2 WithWeapon(Weapon weaponPrefab)
-    {
-        WeaponPrefab = weaponPrefab;
-        return this;
-    }
-
-    public UpgradeData2 WithUpgrade(Upgrade upgrade)
-    {
-        Upgrade = upgrade; 
-        return this;
-    }
-}
-
+/*
 public class UpgradesManager1 : MonoBehaviour
 {
     [SerializeField] Weapon flamethrower;
@@ -66,4 +38,4 @@ public class UpgradesManager1 : MonoBehaviour
         upgrades.Add(upgrade);
         return upgrade;
     }
-}
+}*/

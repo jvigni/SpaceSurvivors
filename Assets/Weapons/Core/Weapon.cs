@@ -3,20 +3,18 @@ using UnityEngine;
 
 public class WeaponLevelData
 {
-    public string title;
-    public string desc;
+    public string Title;
+    public string Desc;
 
     public WeaponLevelData(string title, string desc)
     {
-        this.title = title;
-        this.desc = desc;
+        Title = title;
+        Desc = desc;
     }
 }
 
 public abstract class Weapon : MonoBehaviour
 {
-    public string Title;
-    public string Desc;
     public Sprite Icon;
     public Weapon nextUpgrade;
     [SerializeField] float cooldownSecs;
@@ -25,10 +23,9 @@ public abstract class Weapon : MonoBehaviour
     protected int level = 1;
 
     protected abstract WeaponLevelData[] levelsData { get; }
-    public WeaponLevelData NextLevelData
-    {
-        get { return levelsData[level + 1]; }
-    }
+
+    public WeaponLevelData FirstLevelData => levelsData[0];
+    public WeaponLevelData NextLevelData => levelsData[level]; //No hace falta un +1 ya que lvl arranca en 1 y el array en 0.
 
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
@@ -38,6 +35,11 @@ public abstract class Weapon : MonoBehaviour
     public void Init(GameObject owner)
     {
         this.owner = owner;
+    }
+
+    public void LevelUp()
+    {
+        level++;
     }
 
     public void StartAutoshooting()

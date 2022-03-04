@@ -2,59 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Upgrade
-{
-    public abstract void Trigger();
-    public abstract UpgradeData2 Data { get; }
-}
-
-public class NewWeaponUpgrade : Upgrade
-{
-    Weapon weaponPrefab;
-
-    public NewWeaponUpgrade(Weapon weaponPrefab)
-    {
-        this.weaponPrefab = weaponPrefab;
-    }
-
-    public override UpgradeData2 Data => new UpgradeData2(weaponPrefab.Title, weaponPrefab.Desc, weaponPrefab.Icon);
-
-    public override void Trigger()
-    {
-        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().SpawnWeapon(weaponPrefab);
-    }
-}
-
-public class WeaponLevelUpUpgrade : Upgrade
-{
-    Weapon weapon;
-
-    public WeaponLevelUpUpgrade(Weapon weapon)
-    {
-        this.weapon = weapon;
-    }
-
-    public override UpgradeData2 Data => 
-        new UpgradeData2(weapon.NextLevelData.title, weapon.NextLevelData.desc, weapon.Icon);
-
-    public override void Trigger()
-    {
-        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().LevelUp(weapon);
-    }
-}
-
-
-
 public class UpgradesView : MonoBehaviour
 {
     [SerializeField] UpgradeView[] upgradeViews;
-    public event Action<UpgradeData> OnUpgradePicked;
+    public event Action<Upgrade> OnUpgradePicked;
     int selectedIndex;
 
-    public void Show(List<UpgradeData> upgradeData)
+    public void Show(List<Upgrade> upgrade)
     {
         for (int i = 0; i < upgradeViews.Length; i++)
-            upgradeViews[i].Init(upgradeData[i]);
+            upgradeViews[i].Init(upgrade[i]);
 
         Select(0);
         gameObject.SetActive(true);
@@ -77,7 +34,7 @@ public class UpgradesView : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.F))
         {
-            OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Data);
+            OnUpgradePicked?.Invoke(upgradeViews[selectedIndex].Upgrade);
             Hide();
         }
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HomingMissileWeapon : Weapon 
 {
@@ -11,7 +10,8 @@ public class HomingMissileWeapon : Weapon
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
         new WeaponLevelData("Homming I", "bum bum"),
-        new WeaponLevelData("Homming II", "advanced bum bum")
+        new WeaponLevelData("Homming II", "advanced bum bum"),
+        new WeaponLevelData("Homming III", "uwu"),
     };
 
     public override void Trigger()
