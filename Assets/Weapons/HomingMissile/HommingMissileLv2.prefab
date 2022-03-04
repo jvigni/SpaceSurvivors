@@ -49,6 +49,6 @@ MonoBehaviour:
   nextUpgrade: {fileID: 4525725196466149136, guid: e49a017d1a1dda244952bbdcb47ceda3, type: 3}
   cooldownSecs: 0.5
   projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
-  damage: 2
+  damage: 5
   amountOfProjectiles: 2
   AOERadius: 0

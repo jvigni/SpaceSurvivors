@@ -18,7 +18,6 @@ public class Projectile : MonoBehaviour
 {
     public bool Pierce; //Does not destroy on hit
     [SerializeField] float shakeIntensity = 0f;
-    [SerializeField] DmgInfo damage;
     [SerializeField] ParticleSystem trayParticlesPrefab;
     [SerializeField] ParticleSystem explosionParticlesPrefab;
     [SerializeField] AudioClip explosionSFX;
@@ -133,6 +132,6 @@ public class Projectile : MonoBehaviour
     void HandleSingleTargetCollision(GameObject target)
     {
         var lifeform = target.GetComponent<Lifeform>();
-        if(lifeform) lifeform.ReceiveDamage(damage);
+        if(lifeform) lifeform.ReceiveDamage(new DmgInfo(Damage));
     }
 }
