@@ -1,5 +1,14 @@
 ﻿using UnityEngine;
 
+public enum WeaponID
+{
+    Cannon,
+    HommingMissile,
+    DumDum,
+    Flamethrower,
+    RPG,
+}
+
 public class WeaponLevelData
 {
     public string Title;
@@ -26,6 +35,7 @@ public abstract class Weapon : MonoBehaviour
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
 
+    public abstract WeaponID ID { get; }
     protected abstract WeaponLevelData[] levelsData { get; }
     protected virtual void DoOnUpgrade(int level) { }
     

@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpaceshipWeaponsManager : MonoBehaviour
 {
     [SerializeField] List<Weapon> weaponsPrefab;
-    List<Weapon> weaponsInstances = new List<Weapon>();
+    public List<Weapon> EquipedWeapons = new List<Weapon>();
     bool autoshooting;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     public List<Upgrade> GetAllWeaponsUpgrades()
     {
         List<Upgrade> upgrades = new List<Upgrade>();
-        foreach (Weapon weapon in weaponsInstances)
+        foreach (Weapon weapon in EquipedWeapons)
         {
             if(!weapon.IsMaxLevel)
                 upgrades.Add(new WeaponLevelUpUpgrade(weapon));
@@ -28,7 +28,7 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     {
         var instance = Instantiate(weapon, transform);
         instance.Init(gameObject);
-        weaponsInstances.Add(instance);
+        EquipedWeapons.Add(instance);
 
         if (autoshooting)
             instance.StartAutoshooting();
@@ -37,14 +37,14 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     public void StartAutoshooting()
     {
         autoshooting = true;
-        foreach (Weapon weapon in weaponsInstances)
+        foreach (Weapon weapon in EquipedWeapons)
             weapon.StartAutoshooting();
     }
 
     public void StopAutoshooting()
     {
         autoshooting = false;
-        foreach (Weapon weapon in weaponsInstances)
+        foreach (Weapon weapon in EquipedWeapons)
             weapon.StopAutoshooting();
     }
 }

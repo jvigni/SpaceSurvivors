@@ -7,6 +7,7 @@ public class HomingMissileWeapon : Weapon
     [SerializeField] float lv3CooldownDecrement;
     [SerializeField] float lv5AOERadius;
 
+    public override WeaponID ID => WeaponID.HommingMissile;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
         new WeaponLevelData("Homming Missile I", "Shoots self guided missiles"),

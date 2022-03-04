@@ -8,6 +8,7 @@ public class FlamethrowerWeapon : Weapon
     [SerializeField] Effect burningEffect;
     bool firing;
 
+    public override WeaponID ID => WeaponID.Flamethrower;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
         new WeaponLevelData("T1","D1"),

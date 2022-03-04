@@ -5,6 +5,8 @@ public class DumDumWeapon : Weapon
     [SerializeField] float offset;
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] float throwForce;
+
+    public override WeaponID ID => WeaponID.DumDum;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
         new WeaponLevelData("T1","D1"),

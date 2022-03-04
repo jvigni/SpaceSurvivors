@@ -37,6 +37,8 @@ public class App : MonoBehaviour
 
         var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
         weaponsManager.StartAutoshooting();
+
+        Provider.WeaponsManager.GetUnequipedWeapons();
     }
 
     IEnumerator SpawnEnemies()

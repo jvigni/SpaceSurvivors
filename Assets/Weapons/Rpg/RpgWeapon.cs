@@ -5,6 +5,7 @@ public class RpgWeapon : Weapon
     [SerializeField] Projectile projectile;
     [SerializeField] float throwForce;
 
+    public override WeaponID ID => WeaponID.RPG;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
         new WeaponLevelData("T1","D1"),
