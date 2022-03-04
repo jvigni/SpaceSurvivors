@@ -2,9 +2,12 @@
 
 public abstract class Weapon : MonoBehaviour
 {
+    public string Title;
+    public string Desc;
     public Sprite Icon;
+    public Weapon nextUpgrade;
     [SerializeField] float cooldownSecs;
-    
+
     protected GameObject owner;
     protected int level = 1;
     
@@ -12,11 +15,6 @@ public abstract class Weapon : MonoBehaviour
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
 
     bool autoShooting;
-
-    protected abstract string Title { get; }
-    protected abstract string Description { get; }
-    public abstract Weapon NextUpgrade { get; }
-
 
     public void Init(GameObject owner)
     {

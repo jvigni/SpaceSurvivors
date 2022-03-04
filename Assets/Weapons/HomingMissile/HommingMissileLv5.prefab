@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1855145371723630846
+--- !u!1 &2538422810999728003
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1855145371723630844}
-  - component: {fileID: 1855145371723630847}
+  - component: {fileID: 2538422810999728029}
+  - component: {fileID: 2538422810999728002}
   m_Layer: 0
-  m_Name: HomingMissileWeapon
+  m_Name: HommingMissileLv5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1855145371723630844
+--- !u!4 &2538422810999728029
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855145371723630846}
+  m_GameObject: {fileID: 2538422810999728003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,17 +31,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1855145371723630847
+--- !u!114 &2538422810999728002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855145371723630846}
+  m_GameObject: {fileID: 2538422810999728003}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d5f7153c13f6e4d907fa28855ec979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownSecs: 1.2
-  projectile: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
+  Title: Homming Missile V
+  Desc: Missiles go BOOM!
+  Icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
+  nextUpgrade: {fileID: 0}
+  cooldownSecs: 0.25
+  projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
+  damage: 2
+  amountOfProjectiles: 3
+  AOERadius: 5
