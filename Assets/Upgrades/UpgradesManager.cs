@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradesManager : MonoBehaviour
 {
-    UpgradeData[] upgradesData;
+    List<UpgradeData> upgradesData;
 
     public void StartNewUpgradeProcess() 
     {
@@ -19,7 +20,8 @@ public class UpgradesManager : MonoBehaviour
 
     private void Start()
     {
-        upgradesData = Resources.LoadAll<UpgradeData>("");
+        //upgradesData = Resources.LoadAll<UpgradeData>("");
+        upgradesData = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().GetAllWeaponsUpgrades();
         Provider.UpgradesView.OnUpgradePicked += data => OnUpgradePicked(data);
     }
 

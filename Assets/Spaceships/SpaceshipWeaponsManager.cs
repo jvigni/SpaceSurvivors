@@ -13,6 +13,20 @@ public class SpaceshipWeaponsManager : MonoBehaviour
             SpawnWeapon(weapon);
     }
 
+    public List<UpgradeData> GetAllWeaponsUpgrades()
+    {
+        List<UpgradeData> upgrades = new List<UpgradeData>();
+        foreach (Weapon weapon in weaponsInstances)
+        {
+            if(weapon.nextUpgrade != null)
+            {
+                var upgrade = new UpgradeData(weapon.Title, weapon.Desc, weapon.Icon, weaponPrefab: weapon);
+                upgrades.Add(upgrade);
+            }
+        }
+        return upgrades;
+    }
+
     public void SpawnWeapon(Weapon weapon)
     {
         var instance = Instantiate(weapon, transform);

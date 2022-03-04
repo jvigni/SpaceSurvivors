@@ -7,5 +7,6 @@ public class Provider
     public static CooldownManager CooldownManager;
     public static UpgradesView UpgradesView;
     public static UpgradesManager UpgradesManager;
+    public static WeaponsManager WeaponsManager;
     public static XpBar XpBar;
 }

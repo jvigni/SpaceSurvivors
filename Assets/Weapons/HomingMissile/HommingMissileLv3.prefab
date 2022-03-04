@@ -47,7 +47,7 @@ MonoBehaviour:
   Desc: Highly increase rate of fire
   Icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
   nextUpgrade: {fileID: 8524971232689522851, guid: edaa0803cbba15d4aa08aa2bb7eba0c8, type: 3}
-  cooldownSecs: 0.25
+  cooldownSecs: 0.5
   projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
   damage: 5
   amountOfProjectiles: 2

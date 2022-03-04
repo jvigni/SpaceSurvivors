@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class HomingMissileWeapon : Weapon 
 {
@@ -6,6 +7,12 @@ public class HomingMissileWeapon : Weapon
     [SerializeField] int damage = 2;
     [SerializeField] int amountOfProjectiles = 1;
     [SerializeField] float AOERadius = 0f;
+
+    protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
+    {
+        new WeaponLevelData("Homming I", "bum bum"),
+        new WeaponLevelData("Homming II", "advanced bum bum")
+    };
 
     public override void Trigger()
     {

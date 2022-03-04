@@ -1,5 +1,49 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+public abstract class Upgrade
+{
+    public abstract void Trigger();
+    public abstract UpgradeData2 Data { get; }
+}
+
+public class NewWeaponUpgrade : Upgrade
+{
+    Weapon weaponPrefab;
+
+    public NewWeaponUpgrade(Weapon weaponPrefab)
+    {
+        this.weaponPrefab = weaponPrefab;
+    }
+
+    public override UpgradeData2 Data => new UpgradeData2(weaponPrefab.Title, weaponPrefab.Desc, weaponPrefab.Icon);
+
+    public override void Trigger()
+    {
+        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().SpawnWeapon(weaponPrefab);
+    }
+}
+
+public class WeaponLevelUpUpgrade : Upgrade
+{
+    Weapon weapon;
+
+    public WeaponLevelUpUpgrade(Weapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
+    public override UpgradeData2 Data => 
+        new UpgradeData2(weapon.NextLevelData.title, weapon.NextLevelData.desc, weapon.Icon);
+
+    public override void Trigger()
+    {
+        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().LevelUp(weapon);
+    }
+}
+
+
 
 public class UpgradesView : MonoBehaviour
 {
@@ -7,7 +51,7 @@ public class UpgradesView : MonoBehaviour
     public event Action<UpgradeData> OnUpgradePicked;
     int selectedIndex;
 
-    public void Show(UpgradeData[] upgradeData)
+    public void Show(List<UpgradeData> upgradeData)
     {
         for (int i = 0; i < upgradeViews.Length; i++)
             upgradeViews[i].Init(upgradeData[i]);

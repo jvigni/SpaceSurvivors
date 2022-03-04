@@ -47,7 +47,7 @@ MonoBehaviour:
   Desc: Shoots 3 missiles at once
   Icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
   nextUpgrade: {fileID: 2538422810999728002, guid: 81e0f2ee2c4cdfb49b2a2b205e3f172e, type: 3}
-  cooldownSecs: 0.25
+  cooldownSecs: 0.5
   projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
   damage: 5
   amountOfProjectiles: 3

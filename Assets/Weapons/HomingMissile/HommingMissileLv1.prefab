@@ -47,7 +47,7 @@ MonoBehaviour:
   Desc: Shoots self-guided missiles
   Icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
   nextUpgrade: {fileID: 3480681423507050593, guid: 046d321f7d02b774f8e1e1079422b6ad, type: 3}
-  cooldownSecs: 0.5
+  cooldownSecs: 1
   projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
   damage: 5
   amountOfProjectiles: 1

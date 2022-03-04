@@ -1,4 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public class WeaponLevelData
+{
+    public string title;
+    public string desc;
+
+    public WeaponLevelData(string title, string desc)
+    {
+        this.title = title;
+        this.desc = desc;
+    }
+}
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -10,7 +23,13 @@ public abstract class Weapon : MonoBehaviour
 
     protected GameObject owner;
     protected int level = 1;
-    
+
+    protected abstract WeaponLevelData[] levelsData { get; }
+    public WeaponLevelData NextLevelData
+    {
+        get { return levelsData[level + 1]; }
+    }
+
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
 
