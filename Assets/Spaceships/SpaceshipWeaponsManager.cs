@@ -23,7 +23,10 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     {
         List<Upgrade> upgrades = new List<Upgrade>();
         foreach (Weapon weapon in weaponsInstances)
-            upgrades.Add(new WeaponLevelUpUpgrade(weapon));
+        {
+            if(!weapon.IsMaxLevel)
+                upgrades.Add(new WeaponLevelUpUpgrade(weapon));
+        }
         return upgrades;
     }
 

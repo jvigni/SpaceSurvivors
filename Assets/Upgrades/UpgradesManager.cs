@@ -5,8 +5,9 @@ public class UpgradesManager : MonoBehaviour
 {
     List<Upgrade> upgradesData;
 
-    public void StartNewUpgradeProcess() 
+    public void StartNewUpgradeProcess()
     {
+        LoadUpgrades();
         Upgrade[] selectedUpgrades;
         //TODO Logica para seleccionar que upgrades mostrar. PLACEHOLDER:
         Provider.UpgradesView.Show(upgradesData);
@@ -21,8 +22,12 @@ public class UpgradesManager : MonoBehaviour
     private void Start()
     {
         //upgradesData = Resources.LoadAll<UpgradeData>("");
-        upgradesData = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().GetAllWeaponsUpgrades();
         Provider.UpgradesView.OnUpgradePicked += data => OnUpgradePicked(data);
+    }
+
+    void LoadUpgrades()
+    {
+        upgradesData = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().GetAllWeaponsUpgrades();
     }
 
     void OnUpgradePicked(Upgrade upgrade)

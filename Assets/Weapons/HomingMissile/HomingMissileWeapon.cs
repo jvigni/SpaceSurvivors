@@ -12,11 +12,13 @@ public class HomingMissileWeapon : Weapon
         new WeaponLevelData("Homming I", "bum bum"),
         new WeaponLevelData("Homming II", "advanced bum bum"),
         new WeaponLevelData("Homming III", "uwu"),
+        new WeaponLevelData("Homming IV", "uwu"),
+        new WeaponLevelData("Homming V", "uwu"),
     };
 
     public override void Trigger()
     {
-        for (int i = 0; i < amountOfProjectiles; i++)
+        for (int i = 0; i < level; i++)
             ShootMissile();
     }
 

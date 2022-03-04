@@ -26,9 +26,12 @@ public abstract class Weapon : MonoBehaviour
 
     public WeaponLevelData FirstLevelData => levelsData[0];
     public WeaponLevelData NextLevelData => levelsData[level]; //No hace falta un +1 ya que lvl arranca en 1 y el array en 0.
+    public bool IsMaxLevel => level == maxLevel;
 
     protected GameObject NearestTarget => Provider.Spaceship.GetComponent<Targeting>().Target;
     protected bool HasUpgrade(Upgrade upgrade) => Provider.Spaceship.GetComponent<SpaceshipUpgradesManager>().HasUpgrade(upgrade);
+
+    public int maxLevel = 5;
 
     bool autoShooting;
 
