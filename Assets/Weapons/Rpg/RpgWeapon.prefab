@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownSecs: 2
+  Icon: {fileID: 21300000, guid: c3611a002dd911c4ca889cf142a10d94, type: 3}
   projectile: {fileID: 2319871057651355956, guid: 0ae274400bed34f4d8cf754d5578e89b, type: 3}
   throwForce: 24

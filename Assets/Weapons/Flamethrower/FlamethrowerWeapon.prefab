@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownSecs: 6
+  Icon: {fileID: 21300000, guid: 9f69279bfcd599c459189fa5305f99bf, type: 3}
   firingSeconds: 2.5
   damage:
     Amount: 1
