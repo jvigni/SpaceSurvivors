@@ -9,7 +9,7 @@ public class DumDumWeapon : Weapon
     public override WeaponID ID => WeaponID.DumDum;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("DumDum I","Fast shooting weapon"),
+        new WeaponLevelData("New Weapon: <color=orange>DumDum","Fast shooting weapon"),
         new WeaponLevelData("DumDum II","TODO"),
         new WeaponLevelData("DumDum III","TODO"),
         new WeaponLevelData("DumDum IV","TODO"),

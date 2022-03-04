@@ -8,7 +8,7 @@ public class RpgWeapon : Weapon
     public override WeaponID ID => WeaponID.RPG;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("RPG I","Huge rocket launcher"),
+        new WeaponLevelData("New Weapon: <color=orange>RPG","Huge rocket launcher"),
         new WeaponLevelData("RPG II","TODO"),
         new WeaponLevelData("RPG III","TODO"),
         new WeaponLevelData("RPG IV","TODO"),

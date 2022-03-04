@@ -8,7 +8,7 @@ public class CannonWeapon : Weapon
     public override WeaponID ID => WeaponID.Cannon;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("Cannon I","Shoots huge projectiles"),
+        new WeaponLevelData("New Weapon: <color=orange>Cannon","Shoots huge projectiles"),
         new WeaponLevelData("Cannon II","TODO"),
         new WeaponLevelData("Cannon III","TODO"),
         new WeaponLevelData("Cannon IV","TODO"),
