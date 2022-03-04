@@ -2,6 +2,7 @@
 
 public class CannonWeapon : Weapon 
 {
+    [SerializeField] int damage;
     [SerializeField] Projectile projectile;
     [SerializeField] float throwForce;
 
@@ -22,6 +23,7 @@ public class CannonWeapon : Weapon
             return;
 
         Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
+        projectileInstance.Damage = damage;
         Vector2 direction = (target.transform.position - owner.transform.position).normalized;
         projectileInstance.Push(direction, throwForce);
     }

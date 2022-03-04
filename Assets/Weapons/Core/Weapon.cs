@@ -37,7 +37,7 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract WeaponID ID { get; }
     protected abstract WeaponLevelData[] levelsData { get; }
-    protected virtual void DoOnUpgrade(int level) { }
+    protected virtual void DoOnLevelUp(int level) { }
     
     bool autoShooting;
 
@@ -49,7 +49,7 @@ public abstract class Weapon : MonoBehaviour
     internal void OnUpgrade()
     {
         level++;
-        DoOnUpgrade(level);
+        DoOnLevelUp(level);
     }
 
     public void StartAutoshooting()
