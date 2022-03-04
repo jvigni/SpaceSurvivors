@@ -8,6 +8,15 @@ public class FlamethrowerWeapon : Weapon
     [SerializeField] Effect burningEffect;
     bool firing;
 
+    protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
+    {
+        new WeaponLevelData("T1","D1"),
+        new WeaponLevelData("T2","D2"),
+        new WeaponLevelData("T3","D3"),
+        new WeaponLevelData("T4","D4"),
+        new WeaponLevelData("T5","D5"),
+    };
+
     private void Start()
     {
         GetComponent<ParticleSystem>().Stop(); //No puedo arrancarlo apagado desde el inspector
