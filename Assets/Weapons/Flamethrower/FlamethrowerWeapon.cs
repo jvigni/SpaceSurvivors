@@ -11,11 +11,11 @@ public class FlamethrowerWeapon : Weapon
     public override WeaponID ID => WeaponID.Flamethrower;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("T1","D1"),
-        new WeaponLevelData("T2","D2"),
-        new WeaponLevelData("T3","D3"),
-        new WeaponLevelData("T4","D4"),
-        new WeaponLevelData("T5","D5"),
+        new WeaponLevelData("Flamethrower I","Burn them all!"),
+        new WeaponLevelData("Flamethrower II","TODO"),
+        new WeaponLevelData("Flamethrower III","TODO"),
+        new WeaponLevelData("Flamethrower IV","TODO"),
+        new WeaponLevelData("Flamethrower V","TODO"),
     };
 
     private void Start()
