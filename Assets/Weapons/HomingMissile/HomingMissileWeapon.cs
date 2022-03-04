@@ -39,4 +39,10 @@ public class HomingMissileWeapon : Weapon
         if(level == 5)
             projInstance.AOERadius = lv5AOERadius;
     }
+
+    protected override void DoOnUpgrade(int level)
+    {
+        if (level == 3)
+            cooldownSecs -= lv3CooldownDecrement;
+    }
 }

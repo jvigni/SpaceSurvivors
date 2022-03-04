@@ -44,6 +44,6 @@ public class WeaponLevelUpUpgrade : Upgrade
 
     public override void Trigger()
     {
-        Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>().LevelUp(weapon);
+        weapon.OnUpgrade();
     }
 }
