@@ -3,12 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ProjectileManager : MonoBehaviour
+{
+    public Projectile Spawn(Projectile prefab, GameObject creator, Vector2 spawnPos, Quaternion rotation)
+    {
+        Projectile instance = Instantiate(prefab, spawnPos, rotation);
+        instance.Creator = creator;
+        return instance;
+    }
+}
+
+
 public class Projectile : MonoBehaviour
 {
     public bool Pierce; //Does not destroy on hit
-    [SerializeField] float AOERadius = 0f;
     [SerializeField] float shakeIntensity = 0f;
-    [SerializeField] DmgInfo dmgInfo;
+    [SerializeField] DmgInfo damage;
     [SerializeField] ParticleSystem trayParticlesPrefab;
     [SerializeField] ParticleSystem explosionParticlesPrefab;
     [SerializeField] AudioClip explosionSFX;
@@ -17,6 +27,10 @@ public class Projectile : MonoBehaviour
 
     GameObject creator;
     ParticleSystem trayParticlesInstance;
+
+    public int Damage { get; set; }
+    public GameObject Creator { get; set; }
+    public float AOERadius { get; set; }
 
     public Projectile BuildNew(GameObject creator, Vector2 spawnPos, Quaternion rotation)
     {
@@ -119,6 +133,6 @@ public class Projectile : MonoBehaviour
     void HandleSingleTargetCollision(GameObject target)
     {
         var lifeform = target.GetComponent<Lifeform>();
-        if(lifeform) lifeform.ReceiveDamage(dmgInfo);
+        if(lifeform) lifeform.ReceiveDamage(damage);
     }
 }

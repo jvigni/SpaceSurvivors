@@ -8,6 +8,12 @@ public class FlamethrowerWeapon : Weapon
     [SerializeField] Effect burningEffect;
     bool firing;
 
+    protected override string Title => throw new System.NotImplementedException();
+
+    protected override string Description => throw new System.NotImplementedException();
+
+    public override Weapon NextUpgrade => throw new System.NotImplementedException();
+
     private void Start()
     {
         GetComponent<ParticleSystem>().Stop(); //No puedo arrancarlo apagado desde el inspector

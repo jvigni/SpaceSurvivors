@@ -6,6 +6,12 @@ public class DumDumWeapon : Weapon
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] float throwForce;
 
+    public override Weapon NextUpgrade => throw new System.NotImplementedException();
+
+    protected override string Title => throw new System.NotImplementedException();
+
+    protected override string Description => throw new System.NotImplementedException();
+
     public override void Trigger()
     {
         Projectile projectileInstance = projectilePrefab.BuildNew(owner, owner.transform.position, Quaternion.identity);
