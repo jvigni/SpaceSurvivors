@@ -5,18 +5,37 @@ using UnityEngine;
 
 public class Cooldown
 {
-    public event Action<Cooldown> OnFinish;
-    float countdown, originalSeconds;
-
-    public Cooldown(float seconds)
+    public float Seconds;
+    public bool Repeat;
+    public IEnumerator OnFinishAction;
+    float countdown;
+    
+    public Cooldown(float seconds, IEnumerator onFinishAction, bool repeat = false)
     {
-        originalSeconds = seconds;
+        Seconds = seconds;
         countdown = seconds;
+        Repeat = repeat;
+        OnFinishAction = onFinishAction;
+    }
+
+    public void Start()
+    {
+        Provider.CooldownManager.Start(this);
+    }
+
+    public void Stop()
+    {
+        Provider.CooldownManager.Stop(this);
+    }
+
+    public void Reset()
+    {
+        countdown = Seconds;
     }
 
     public float Status // Number between 1 (100% loaded / OnFinish is invoked) and 0 (0% loaded. Need to wait the full lenght)
     {
-        get { return 1 - (countdown / originalSeconds); }
+        get { return 1 - (countdown / Seconds); }
     }
 
     public bool IsReady
@@ -27,7 +46,6 @@ public class Cooldown
     public void Tick(float seconds)
     {
         countdown -= seconds;
-        if (countdown <= 0) OnFinish?.Invoke(this);
     }
 }
 
@@ -46,17 +64,29 @@ public class CooldownManager : MonoBehaviour
         StartCoroutine(ManageCooldowns());
     }
 
-    public Cooldown Start(float seconds)
+    public void Stop(Cooldown cooldown)
     {
-        var cooldown = new Cooldown(seconds);
-        cooldown.OnFinish += cooldown => OnCooldownFinish(cooldown);
+        cooldowns.Remove(cooldown);
+    }
+
+    public void Start(Cooldown cooldown)
+    {
         cooldowns.Add(cooldown);
-        return cooldown;
     }
 
     void OnCooldownFinish(Cooldown cooldown)
     {
-        cooldowns.Remove(cooldown);
+        Debug.Log("Cooldown finish");
+        var job = Job.make(cooldown.OnFinishAction);
+        job.jobComplete += _ => AfterActionCompletes(cooldown);
+    }
+
+    void AfterActionCompletes(Cooldown cooldown)
+    {
+        if (cooldown.Repeat)
+            cooldown.Reset();
+        else
+            cooldowns.Remove(cooldown);
     }
 
     IEnumerator ManageCooldowns()
@@ -66,7 +96,12 @@ public class CooldownManager : MonoBehaviour
         {
             yield return wfs;
             foreach (Cooldown cooldown in cooldowns.ToArray())
-                cooldown.Tick(tickTimeSec);
+            {
+                if (cooldown.IsReady)
+                    OnCooldownFinish(cooldown);
+                else
+                    cooldown.Tick(tickTimeSec);
+            }
         }
-    }    
+    }
 }

@@ -31,20 +31,20 @@ public class SpaceshipWeaponsManager : MonoBehaviour
         EquipedWeapons.Add(instance);
 
         if (autoshooting)
-            instance.StartAutoshooting();
+            instance.TurnOn();
     }
 
     public void StartAutoshooting()
     {
         autoshooting = true;
         foreach (Weapon weapon in EquipedWeapons)
-            weapon.StartAutoshooting();
+            weapon.TurnOn();
     }
 
     public void StopAutoshooting()
     {
         autoshooting = false;
         foreach (Weapon weapon in EquipedWeapons)
-            weapon.StopAutoshooting();
+            weapon.TurnOff();
     }
 }

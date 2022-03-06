@@ -48,12 +48,7 @@ public class FlamethrowerWeapon : Weapon
         }
     }
 
-    public override void Trigger()
-    {
-        StartCoroutine(FlamethrowerRoutine());
-    }
-
-    IEnumerator FlamethrowerRoutine()
+    public override IEnumerator OnCooldownFinish()
     {
         firing = true;
         GetComponent<ParticleSystem>().Play();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CannonWeapon : Weapon 
 {
@@ -16,11 +17,11 @@ public class CannonWeapon : Weapon
         new WeaponLevelData("Cannon V","TODO"),
     };
 
-    public override void Trigger()
+    public override IEnumerator OnCooldownFinish()
     {
         var target = Provider.Spaceship.GetComponent<Targeting>().Target;
         if (target == null) 
-            return;
+            yield return null;
 
         Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
         projectileInstance.Damage = damage;

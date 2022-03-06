@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsPrefab:
-  - {fileID: 6685730990808239974, guid: 26913ac064c7ac14bb0fef12f707d583, type: 3}
+  - {fileID: 2915142121246399129, guid: fe6f9d4c15ea433459836ce47fa796d2, type: 3}
   EquipedWeapons: []
 --- !u!114 &868403116172499854
 MonoBehaviour:

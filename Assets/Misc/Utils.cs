@@ -10,6 +10,11 @@ public class Utils
         return Random.Range(min, max);
     }
 
+    public static float Percentage(float number, float percentage)
+    {
+        return number / (100 / percentage);
+    }
+
     public static bool Chance(int percentage)
     {
         return percentage > Random.Range(0, 99);

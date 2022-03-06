@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HomingMissileWeapon : Weapon 
 {
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] int damage;
-    [SerializeField] float lv3CooldownDecrement;
+    [SerializeField] float lv3CooldownDecrementCoef;
     [SerializeField] float lv5AOERadius;
 
     public override WeaponID ID => WeaponID.HommingMissile;
@@ -17,7 +18,7 @@ public class HomingMissileWeapon : Weapon
         new WeaponLevelData("Homming Missiles V", "Missiles goes BOOM"),
     };
 
-    public override void Trigger()
+    public override IEnumerator OnCooldownFinish()
     {
         var amountOfMissiles = 1;
         if (level >= 2)
@@ -27,6 +28,8 @@ public class HomingMissileWeapon : Weapon
 
         for (int i = 0; i < amountOfMissiles; i++)
             ShootMissile();
+
+        yield return null;
     }
 
     void ShootMissile()
@@ -44,6 +47,6 @@ public class HomingMissileWeapon : Weapon
     protected override void DoOnLevelUp(int level)
     {
         if (level == 3)
-            cooldownSecs -= lv3CooldownDecrement;
+            Cooldown.Seconds *= lv3CooldownDecrementCoef;
     }
 }
