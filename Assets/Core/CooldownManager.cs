@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Observ
+{
+    public bool Done { get; private set; }
+
+
+}
+
 public class Cooldown
 {
     public float Seconds;
