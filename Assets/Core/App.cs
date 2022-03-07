@@ -45,11 +45,11 @@ public class App : MonoBehaviour
     {
         while (true)
         {
-            var waitSeconds = Random.Range(.5f, 2f);
-            var wfs = new WaitForSeconds(waitSeconds);
+            //var waitSeconds = Random.Range(.5f, 2f);
+            var wfs = new WaitForSeconds(1);
             yield return wfs;
 
-            var amountToSpawn = Random.Range(6, 6);
+            var amountToSpawn = Random.Range(1, 3);
             for (int i = 0; i < amountToSpawn; i++)
                 SpawnEnemy();
         }
