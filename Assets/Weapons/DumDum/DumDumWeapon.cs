@@ -8,9 +8,9 @@ public class DumDumWeapon : Weapon
     [SerializeField] float throwForce;
     [SerializeField] float lv3CooldownReductionCoef;
     [SerializeField] float lv5CooldownReductionCoef;
+    [SerializeField] float lv5TimeBetweenShootsReductCoef;
 
-    static float timeBetweenShoots = .2f;
-    WaitForSeconds wfsBetwenShoots = new WaitForSeconds(timeBetweenShoots);
+    float timeBetweenShoots = .2f;
     int amountOfShoots = 1;
 
     public override WeaponID ID => WeaponID.DumDum;
@@ -27,7 +27,7 @@ public class DumDumWeapon : Weapon
     {
         for (int i = 0; i < amountOfShoots; i++)
         {
-            yield return wfsBetwenShoots;
+            yield return new WaitForSeconds(timeBetweenShoots);
             Debug.Log("SHOOT!");
             Shoot();
         }
@@ -58,7 +58,10 @@ public class DumDumWeapon : Weapon
             amountOfShoots += 1;
 
         if (level == 5)
+        {
             Cooldown.Seconds -= timeBetweenShoots * amountOfShoots;
+            timeBetweenShoots -= lv5TimeBetweenShootsReductCoef * timeBetweenShoots;
+        }
     }
 }
 

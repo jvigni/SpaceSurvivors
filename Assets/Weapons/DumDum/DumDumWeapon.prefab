@@ -50,3 +50,4 @@ MonoBehaviour:
   throwForce: 25
   lv3CooldownReductionCoef: 0.25
   lv5CooldownReductionCoef: 0.35
+  lv5TimeBetweenShootsReductCoef: 0.5
