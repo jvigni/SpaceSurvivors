@@ -23,7 +23,7 @@ public class DumDumWeapon : Weapon
         new WeaponLevelData("DumDum V","FULL POWER!"),
     };
 
-    public override IEnumerator OnCooldownFinish()
+    public override IEnumerator DoOnCooldownFinish()
     {
         for (int i = 0; i < amountOfShoots; i++)
         {

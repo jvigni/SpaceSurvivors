@@ -48,7 +48,7 @@ public class FlamethrowerWeapon : Weapon
         }
     }
 
-    public override IEnumerator OnCooldownFinish()
+    public override IEnumerator DoOnCooldownFinish()
     {
         firing = true;
         GetComponent<ParticleSystem>().Play();

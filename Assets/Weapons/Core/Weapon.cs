@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public enum WeaponID
@@ -54,7 +55,7 @@ public abstract class Weapon : MonoBehaviour
 
     public void TurnOn()
     {
-        Cooldown = new Cooldown(cooldownSecs, OnCooldownFinish(), repeat: true);
+        Cooldown = new Cooldown(cooldownSecs, () => DoOnCooldownFinish(), repeat: true);
         Cooldown.Start();
     }
 
@@ -63,5 +64,5 @@ public abstract class Weapon : MonoBehaviour
         Cooldown.Stop();
     }
 
-    public abstract IEnumerator OnCooldownFinish();
+    public abstract IEnumerator DoOnCooldownFinish();
 }

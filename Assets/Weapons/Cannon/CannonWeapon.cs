@@ -17,7 +17,7 @@ public class CannonWeapon : Weapon
         new WeaponLevelData("Cannon V","TODO"),
     };
 
-    public override IEnumerator OnCooldownFinish()
+    public override IEnumerator DoOnCooldownFinish()
     {
         var target = Provider.Spaceship.GetComponent<Targeting>().Target;
         if (target == null) 

@@ -16,7 +16,7 @@ public class RpgWeapon : Weapon
         new WeaponLevelData("RPG V","TODO"),
     };
 
-    public override IEnumerator OnCooldownFinish()
+    public override IEnumerator DoOnCooldownFinish()
     {
         var target = Provider.Spaceship.GetComponent<Targeting>().Target;
         if (target == null)

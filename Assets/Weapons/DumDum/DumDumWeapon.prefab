@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownSecs: 1
   Icon: {fileID: 21300000, guid: a11df8840403437439d4ac9dca47680e, type: 3}
-  damage: 5
+  damage: 10
   projectilePrefab: {fileID: 2319871057651355956, guid: 0f5dc5578c199ce42b5a128167c624da, type: 3}
   throwForce: 25
-  lv3CooldownReductionCoef: 0.2
-  lv5CooldownReductionCoef: 0.2
+  lv3CooldownReductionCoef: 0.25
+  lv5CooldownReductionCoef: 0.35

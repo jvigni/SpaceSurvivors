@@ -3,112 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Observ
-{
-    public bool Done { get; private set; }
-
-
-}
-
 public class Cooldown
 {
+    public event Action OnFinish;
+    public Func<IEnumerator> Action;
     public float Seconds;
-    public bool Repeat;
-    public IEnumerator OnFinishAction;
-    float countdown;
-    
-    public Cooldown(float seconds, IEnumerator onFinishAction, bool repeat = false)
+    bool repeat;
+
+    public Cooldown(float seconds, Func<IEnumerator> action, bool repeat = false)
     {
         Seconds = seconds;
-        countdown = seconds;
-        Repeat = repeat;
-        OnFinishAction = onFinishAction;
+        Action = action;
+        this.repeat = repeat;
     }
 
-    public void Start()
-    {
-        Provider.CooldownManager.Start(this);
-    }
+    public void Start() => Provider.CooldownManager.StartCooldown(this);
+    public void Stop() => Provider.CooldownManager.StopCooldown(this);
 
-    public void Stop()
+    public void Finish()
     {
-        Provider.CooldownManager.Stop(this);
-    }
-
-    public void Reset()
-    {
-        countdown = Seconds;
-    }
-
-    public float Status // Number between 1 (100% loaded / OnFinish is invoked) and 0 (0% loaded. Need to wait the full lenght)
-    {
-        get { return 1 - (countdown / Seconds); }
-    }
-
-    public bool IsReady
-    {
-        get { return countdown <= 0; }
-    }
-
-    public void Tick(float seconds)
-    {
-        countdown -= seconds;
+        OnFinish?.Invoke();
+        if (repeat) Start();
     }
 }
 
 public class CooldownManager : MonoBehaviour
 {
-    float tickTimeSec = .01f;
-    List<Cooldown> cooldowns = new List<Cooldown>();
+    Dictionary<Cooldown, Coroutine> routines = new Dictionary<Cooldown, Coroutine>();
 
     private void Awake()
     {
         Provider.CooldownManager = this;
     }
 
-    private void Start()
+    public void StartCooldown(Cooldown cooldown)
     {
-        StartCoroutine(ManageCooldowns());
+        var routine = StartCoroutine(ManageCooldown(cooldown));
+        routines.Add(cooldown, routine);
     }
 
-    public void Stop(Cooldown cooldown)
+    public void StopCooldown(Cooldown cooldown)
     {
-        cooldowns.Remove(cooldown);
+        StopCoroutine(routines[cooldown]);
     }
 
-    public void Start(Cooldown cooldown)
+    IEnumerator ManageCooldown(Cooldown cooldown)
     {
-        cooldowns.Add(cooldown);
-    }
-
-    void OnCooldownFinish(Cooldown cooldown)
-    {
-        Debug.Log("Cooldown finish");
-        var job = Job.make(cooldown.OnFinishAction);
-        job.jobComplete += _ => AfterActionCompletes(cooldown);
-    }
-
-    void AfterActionCompletes(Cooldown cooldown)
-    {
-        if (cooldown.Repeat)
-            cooldown.Reset();
-        else
-            cooldowns.Remove(cooldown);
-    }
-
-    IEnumerator ManageCooldowns()
-    {
-        var wfs = new WaitForSeconds(tickTimeSec);
-        while (true)
-        {
-            yield return wfs;
-            foreach (Cooldown cooldown in cooldowns.ToArray())
-            {
-                if (cooldown.IsReady)
-                    OnCooldownFinish(cooldown);
-                else
-                    cooldown.Tick(tickTimeSec);
-            }
-        }
+        yield return new WaitForSeconds(cooldown.Seconds);
+        yield return StartCoroutine(cooldown.Action.Invoke());
+        routines.Remove(cooldown);
+        cooldown.Finish();
     }
 }

@@ -18,7 +18,7 @@ public class HomingMissileWeapon : Weapon
         new WeaponLevelData("Homming Missiles V", "Missiles goes BOOM"),
     };
 
-    public override IEnumerator OnCooldownFinish()
+    public override IEnumerator DoOnCooldownFinish()
     {
         var amountOfMissiles = 1;
         if (level >= 2)
