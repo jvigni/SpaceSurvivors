@@ -1456,10 +1456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponsPrefab:
   - {fileID: 6685730990808239974, guid: 26913ac064c7ac14bb0fef12f707d583, type: 3}
-  - {fileID: 2915142121246399129, guid: fe6f9d4c15ea433459836ce47fa796d2, type: 3}
   - {fileID: 4514101397569896702, guid: 33df0b3a7b345ec46a47e04c362aa965, type: 3}
   - {fileID: 7322164905039404663, guid: ed5bfc944f2082e4583a91dc0178d662, type: 3}
-  - {fileID: 1373763369117981302, guid: 12ddcd116d6e7994d94ce8c64112e0b8, type: 3}
 --- !u!4 &2042375369
 Transform:
   m_ObjectHideFlags: 0
