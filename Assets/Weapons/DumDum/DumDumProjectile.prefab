@@ -41,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2319871057651355959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -145,11 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pierce: 0
-  AOERadius: 0
   shakeIntensity: 0
-  dmgInfo:
-    Amount: 5
-  trayParticlesPrefab: {fileID: 0}
-  explosionParticlesPrefab: {fileID: 0}
+  trayParticlesPrefab: {fileID: 198157609410178438, guid: ef7835b5a2688cd4ba5aed9fb543bae9, type: 3}
+  explosionParticlesPrefab: {fileID: 198037824723107740, guid: b6eb7e516b5082144a5d33852de1a180, type: 3}
   explosionSFX: {fileID: 8300000, guid: 66eaeded03c802340bc497885d931723, type: 3}
   traySFX: {fileID: 8300000, guid: 661fb45fc50ada941bf8cc5924641fc3, type: 3}

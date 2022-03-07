@@ -43,8 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cb9d41394f55f4b8df99fed503d6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownSecs: 1.5
+  cooldownSecs: 1.2
   Icon: {fileID: 21300000, guid: f74bf7ec1cee05945851bb4f3b1afbb6, type: 3}
   damage: 10
-  projectile: {fileID: 2319871057651355956, guid: a0aa73c91841b614daecabee602b56f6, type: 3}
-  throwForce: 12
+  projectilePrefab: {fileID: 2319871057651355956, guid: a0aa73c91841b614daecabee602b56f6, type: 3}
+  throwForce: 15
+  lv3CooldownRed: 0.4
+  lv5CooldownRed: 0.4
+  timeBetweenShoots: 0.15

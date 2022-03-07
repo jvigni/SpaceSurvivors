@@ -6,20 +6,18 @@ public class DumDumWeapon : Weapon
     [SerializeField] int damage;
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] float throwForce;
-    [SerializeField] float lv3CooldownReductionCoef;
-    [SerializeField] float lv5CooldownReductionCoef;
-    [SerializeField] float lv5TimeBetweenShootsReductCoef;
-
-    float timeBetweenShoots = .2f;
+    [SerializeField] float lv3CooldownRed;
+    [SerializeField] float lv5CooldownRed;
+    [SerializeField] float timeBetweenShoots;
     int amountOfShoots = 1;
 
     public override WeaponID ID => WeaponID.DumDum;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("New Weapon: <color=orange>DumDum","Fast shooting weapon"),
-        new WeaponLevelData("DumDum II","Shoots 2 bullets"),
-        new WeaponLevelData("DumDum III","Increased rate of fire"),
-        new WeaponLevelData("DumDum IV","Shoots 3 bullets"),
+        new WeaponLevelData("New Weapon: <color=orange>DumDum I","Fast Shooting Weapon"),
+        new WeaponLevelData("DumDum II","Shoots 2 Bullets"),
+        new WeaponLevelData("DumDum III","Increased Rate of Fire"),
+        new WeaponLevelData("DumDum IV","Shoots 3 Bullets"),
         new WeaponLevelData("DumDum V","FULL POWER!"),
     };
 
@@ -28,7 +26,6 @@ public class DumDumWeapon : Weapon
         for (int i = 0; i < amountOfShoots; i++)
         {
             yield return new WaitForSeconds(timeBetweenShoots);
-            Debug.Log("SHOOT!");
             Shoot();
         }
     }
@@ -52,16 +49,13 @@ public class DumDumWeapon : Weapon
             amountOfShoots += 1;
 
         if (level == 3)
-            Cooldown.Seconds -= Cooldown.Seconds * lv3CooldownReductionCoef;
+            Cooldown.Seconds -= lv3CooldownRed;
 
         if (level == 4)
             amountOfShoots += 1;
 
         if (level == 5)
-        {
-            Cooldown.Seconds -= timeBetweenShoots * amountOfShoots;
-            timeBetweenShoots -= lv5TimeBetweenShootsReductCoef * timeBetweenShoots;
-        }
+            Cooldown.Seconds -= lv5CooldownRed;
     }
 }
 

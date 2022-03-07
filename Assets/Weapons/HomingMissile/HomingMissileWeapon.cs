@@ -5,8 +5,9 @@ public class HomingMissileWeapon : Weapon
 {
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] int damage;
-    [SerializeField] float lv3CooldownDecrementCoef;
+    [SerializeField] float lv3CooldownRed;
     [SerializeField] float lv5AOERadius;
+    int amountOfMissiles = 1;
 
     public override WeaponID ID => WeaponID.HommingMissile;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
@@ -20,15 +21,8 @@ public class HomingMissileWeapon : Weapon
 
     public override IEnumerator DoOnCooldownFinish()
     {
-        var amountOfMissiles = 1;
-        if (level >= 2)
-            amountOfMissiles = 2;
-        if (level >= 4)
-            amountOfMissiles = 3;
-
         for (int i = 0; i < amountOfMissiles; i++)
             ShootMissile();
-
         yield return null;
     }
 
@@ -46,7 +40,11 @@ public class HomingMissileWeapon : Weapon
 
     protected override void DoOnLevelUp(int level)
     {
+        if (level == 2)
+            amountOfMissiles++;
         if (level == 3)
-            Cooldown.Seconds *= lv3CooldownDecrementCoef;
+            Cooldown.Seconds -= lv3CooldownRed;
+        if (level >= 4)
+            amountOfMissiles++;
     }
 }

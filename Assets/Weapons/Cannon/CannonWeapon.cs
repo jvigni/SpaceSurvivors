@@ -4,28 +4,57 @@ using UnityEngine;
 public class CannonWeapon : Weapon 
 {
     [SerializeField] int damage;
-    [SerializeField] Projectile projectile;
+    [SerializeField] Projectile projectilePrefab;
     [SerializeField] float throwForce;
+    [SerializeField] float lv3CooldownRed;
+    [SerializeField] float lv5CooldownRed;
+    [SerializeField] float timeBetweenShoots;
+    int amountOfShoots = 1;
 
     public override WeaponID ID => WeaponID.Cannon;
     protected override WeaponLevelData[] levelsData => new WeaponLevelData[]
     {
-        new WeaponLevelData("New Weapon: <color=orange>Cannon","Shoots huge projectiles"),
-        new WeaponLevelData("Cannon II","TODO"),
-        new WeaponLevelData("Cannon III","TODO"),
-        new WeaponLevelData("Cannon IV","TODO"),
-        new WeaponLevelData("Cannon V","TODO"),
+        new WeaponLevelData("New Weapon: <color=orange>Cannon I","Shoots Huge Projectiles"),
+        new WeaponLevelData("Cannon II","Shoots 2 Bullets"),
+        new WeaponLevelData("Cannon III","Increased Rate of Fire"),
+        new WeaponLevelData("Cannon IV","Shoots 3 Bullets"),
+        new WeaponLevelData("Cannon V","Full Power!"),
     };
 
     public override IEnumerator DoOnCooldownFinish()
     {
-        var target = Provider.Spaceship.GetComponent<Targeting>().Target;
-        if (target == null) 
-            yield return null;
+        for (int i = 0; i < amountOfShoots; i++)
+        {
+            yield return new WaitForSeconds(timeBetweenShoots);
+            Shoot();
+        }
+    }
 
-        Projectile projectileInstance = projectile.BuildNew(owner, owner.transform.position, Quaternion.identity);
-        projectileInstance.Damage = damage;
+    void Shoot()
+    {
+        var target = Provider.Spaceship.GetComponent<Targeting>().Target;
+        if (target == null)
+            return;
+
+        Projectile projectile = projectilePrefab.BuildNew(owner, owner.transform.position, Quaternion.identity);
+        projectile.Damage = damage;
         Vector2 direction = (target.transform.position - owner.transform.position).normalized;
-        projectileInstance.Push(direction, throwForce);
+        projectile.RotateTowards(target.transform);
+        projectile.Push(direction, throwForce);
+    }
+
+    protected override void DoOnLevelUp(int level)
+    {
+        if (level == 2)
+            amountOfShoots += 1;
+
+        if (level == 3)
+            Cooldown.Seconds -= lv3CooldownRed;
+
+        if (level == 4)
+            amountOfShoots += 1;
+
+        if (level == 5)
+            Cooldown.Seconds -= lv5CooldownRed;
     }
 }
