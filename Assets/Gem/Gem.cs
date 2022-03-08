@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour
 
     void Consume()
     {
-        Provider.XpBar.Increase(1);
+        Provider.XpManager.Increase(1);
         Destroy(gameObject);
     }
 

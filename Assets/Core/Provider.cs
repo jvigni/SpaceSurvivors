@@ -8,5 +8,5 @@ public class Provider
     public static UpgradesView UpgradesView;
     public static UpgradesManager UpgradesManager;
     public static WeaponsManager WeaponsManager;
-    public static XpBar XpBar;
+    public static XpManager XpManager;
 }
