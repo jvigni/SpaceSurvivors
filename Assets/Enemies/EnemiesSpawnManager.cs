@@ -6,9 +6,20 @@ public class EnemiesSpawnManager : MonoBehaviour
     [SerializeField] GameObject alien1;
     [SerializeField] RectTransform[] spawnAreas;
 
+    private void Awake()
+    {
+        Provider.EnemiesSpawnManager = this;    
+    }
+
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
+    }
+
+    public void TeleportToRndSpawnArea(Transform transform)
+    {
+        var rndAreaIndex = Random.Range(0, spawnAreas.Length);
+        transform.position = GetRndPosFromArea(spawnAreas[rndAreaIndex]);
     }
 
     IEnumerator SpawnEnemies()
@@ -36,9 +47,14 @@ public class EnemiesSpawnManager : MonoBehaviour
         float y = Mathf.Sin(angle) * radius;
         var spawnPos = Provider.Spaceship.transform.position + new Vector3(x, y);
         */
-        var x = Random.Range(spawnArea.rect.xMin, spawnArea.rect.xMax);
-        var y = Random.Range(spawnArea.rect.yMin, spawnArea.rect.yMax);
-        Vector2 spawnPos = (Vector2)spawnArea.transform.position + new Vector2(x, y);
-        Instantiate(alien1, spawnPos, Quaternion.identity);
+        
+        Instantiate(alien1, GetRndPosFromArea(spawnArea), Quaternion.identity);
+    }
+
+    Vector3 GetRndPosFromArea(RectTransform area)
+    {
+        var x = Random.Range(area.rect.xMin, area.rect.xMax);
+        var y = Random.Range(area.rect.yMin, area.rect.yMax);
+        return (Vector2)area.transform.position + new Vector2(x, y);
     }
 }
