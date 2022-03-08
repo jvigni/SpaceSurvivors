@@ -1002,7 +1002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceship: {fileID: 868403116172499844}
-  alien1: {fileID: 1865938427723653078, guid: 549c042ccb9649e4ab2d5b6c55c956cf, type: 3}
   upgradesView: {fileID: 375405447}
 --- !u!4 &1147233164
 Transform:
@@ -1372,6 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a2432978576bc45a13f55683273cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alien1: {fileID: 1865938427723653078, guid: 549c042ccb9649e4ab2d5b6c55c956cf, type: 3}
 --- !u!1 &1828692080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1418,7 @@ MonoBehaviour:
   xpBarSlider: {fileID: 656807466}
   baseXpRequirment: 5
   xpIncrementPerLevel: 10
+  Level: 1
 --- !u!1 &1877326701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,8 +1695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4049842bac83394eaf23e68384fcd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationFactor: 6
-  turnFactor: 2.5
+  accelerationFactor: 6.5
+  turnFactor: 3.2
   driftFactor: 0.95
   maxSpeed: 5
 --- !u!114 &868403116172499852

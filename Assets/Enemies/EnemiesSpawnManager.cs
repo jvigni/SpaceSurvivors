@@ -18,7 +18,7 @@ public class EnemiesSpawnManager : MonoBehaviour
             yield return wfs;
 
             var lvl = Provider.XpManager.Level;
-            var amountToSpawn = lvl * Random.Range(1, 3);
+            var amountToSpawn = lvl * Random.Range(1, 1.5f);
             for (int i = 0; i < amountToSpawn; i++)
                 SpawnEnemy();
         }

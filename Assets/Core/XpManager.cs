@@ -7,7 +7,7 @@ public class XpManager : MonoBehaviour
     [SerializeField] int baseXpRequirment;
     [SerializeField] int xpIncrementPerLevel;
     
-    public int Level;
+    public int Level = 1;
     int nextLvXpRequired;
     int actualXp;
     
