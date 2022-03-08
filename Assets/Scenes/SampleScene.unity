@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4e7fd586432f64cae10427784629d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findRange: 500
+  findRange: 50
   refreshTimeInSec: 0.1
   targetLayer:
     serializedVersion: 2

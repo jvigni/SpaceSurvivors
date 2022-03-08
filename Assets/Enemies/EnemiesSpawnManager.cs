@@ -24,16 +24,16 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
+        var wfs = new WaitForSeconds(Random.Range(3, 3));
         while (true)
         {
-            var wfs = new WaitForSeconds(Random.Range(1, 1));
-            yield return wfs;
-
             var lvl = Provider.XpManager.Level;
             var amountToSpawn = lvl;
             for (int i = 0; i < amountToSpawn; i++)
                 for(int j = 0; j < spawnAreas.Length; j++)
                     SpawnEnemy(spawnAreas[j]);
+            
+            yield return wfs;
         }
     }
 
