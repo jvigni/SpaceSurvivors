@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bdd4140684f334cb0931fa4a45586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 7
   turningSpeed: 0.5
   findRange: 20
   targetLayer:
@@ -116,11 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AOERadius: 0
-  pierce: 0
+  Pierce: 0
   shakeIntensity: 2
-  dmgInfo:
-    Amount: 5
   trayParticlesPrefab: {fileID: 198157609410178438, guid: b1dbc666019d1c6458f178a05cbfe64f, type: 3}
   explosionParticlesPrefab: {fileID: 198037824723107740, guid: 39ba3fd0042ede6468106e9b47915d56, type: 3}
   explosionSFX: {fileID: 8300000, guid: bdeae835cf196f8488bdb24ed068614e, type: 3}

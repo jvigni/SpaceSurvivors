@@ -14,6 +14,7 @@ public class XpManager : MonoBehaviour
     private void Awake()
     {
         Provider.XpManager = this;
+        nextLvXpRequired = baseXpRequirment;
         xpBarSlider.maxValue = nextLvXpRequired;
     }
 
