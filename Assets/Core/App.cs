@@ -29,12 +29,4 @@ public class App : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
             Provider.UpgradesManager.StartNewUpgradeProcess();
     }
-
-    private void Start()
-    {
-        var weaponsManager = Provider.Spaceship.GetComponent<SpaceshipWeaponsManager>();
-        weaponsManager.StartAutoshooting();
-
-        Provider.WeaponsManager.GetUnequipedWeapons();
-    }
 }

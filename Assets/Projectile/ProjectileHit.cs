@@ -4,7 +4,7 @@ public class ProjectileHit : MonoBehaviour
 {
     [SerializeField] string targetTag;
     public float Damage;
-    public float AOERadius { get; set; }
+    public float AOERadius;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -39,6 +39,7 @@ public class ProjectileHit : MonoBehaviour
     void HandleSingleTargetCollision(GameObject target)
     {
         var lifeform = target.GetComponent<Lifeform>();
-        if (lifeform) lifeform.ReceiveDamage(new DmgInfo(Damage));
+        if (lifeform) 
+            lifeform.ReceiveDamage(new DmgInfo(Damage));
     }
 }

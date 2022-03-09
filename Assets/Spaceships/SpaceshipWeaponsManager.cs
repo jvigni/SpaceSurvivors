@@ -7,6 +7,11 @@ public class SpaceshipWeaponsManager : MonoBehaviour
     public List<Weapon> EquipedWeapons = new List<Weapon>();
     bool autoshooting;
 
+    private void Start()
+    {
+        StartAutoshooting();
+    }
+
     private void Awake()
     {
         foreach (Weapon weapon in weaponsPrefab)

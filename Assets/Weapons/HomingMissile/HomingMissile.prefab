@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Enemy
+  Damage: 10
 --- !u!114 &5250199339123624151
 MonoBehaviour:
   m_ObjectHideFlags: 0
