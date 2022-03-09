@@ -4,7 +4,7 @@ using UnityEngine;
 public class CannonWeapon : Weapon 
 {
     [SerializeField] int damage;
-    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] float throwForce;
     [SerializeField] float lv3CooldownRed;
     [SerializeField] float lv5CooldownRed;
@@ -36,11 +36,13 @@ public class CannonWeapon : Weapon
         if (target == null)
             return;
 
-        Projectile projectile = projectilePrefab.BuildNew(owner, owner.transform.position, Quaternion.identity);
-        projectile.Damage = damage;
+        var projectile = Instantiate(projectilePrefab, owner.transform.position, Quaternion.identity);
+        var projectileHit = projectile.GetComponent<ProjectileHit>();
+        projectileHit.Damage = damage;
         Vector2 direction = (target.transform.position - owner.transform.position).normalized;
-        projectile.RotateTowards(target.transform);
-        projectile.Push(direction, throwForce);
+        var projectileMovement = projectile.GetComponent<ProjectileMovement>();
+        projectileMovement.RotateTowards(target.transform);
+        projectileMovement.Push(direction, throwForce);
     }
 
     protected override void DoOnLevelUp(int level)

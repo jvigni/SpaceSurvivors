@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HomingMissileWeapon : Weapon 
 {
-    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] int damage;
     [SerializeField] float lv3CooldownRed;
     [SerializeField] float lv5AOERadius;
@@ -32,10 +32,10 @@ public class HomingMissileWeapon : Weapon
         rotation.y = 0f;
         rotation.x = 0f;
         Vector2 spawnPosition = owner.transform.position;
-        var projInstance = projectilePrefab.BuildNew(owner, spawnPosition, rotation);
-        projInstance.Damage = damage;
+        var projectile = Instantiate(projectilePrefab, spawnPosition, rotation);
+        projectile.GetComponent<ProjectileHit>().Damage = damage;
         if(level == 5)
-            projInstance.AOERadius = lv5AOERadius;
+            projectile.GetComponent<ProjectileHit>().AOERadius = lv5AOERadius;
     }
 
     protected override void DoOnLevelUp(int level)

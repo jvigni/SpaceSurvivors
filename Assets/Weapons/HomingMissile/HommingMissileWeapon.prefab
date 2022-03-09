@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownSecs: 1
   Icon: {fileID: 21300000, guid: 41b9862df87e41a41834a1919ab456d3, type: 3}
-  projectilePrefab: {fileID: 892613720738257132, guid: e89f386d6503f954a80b021441a60d66, type: 3}
+  projectilePrefab: {fileID: 892613720738257128, guid: e89f386d6503f954a80b021441a60d66, type: 3}
   damage: 10
   lv3CooldownRed: 0.25
   lv5AOERadius: 3

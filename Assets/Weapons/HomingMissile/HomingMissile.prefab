@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 892613720738257133}
   - component: {fileID: 892613720738257134}
   - component: {fileID: 892613720738257135}
-  - component: {fileID: 892613720738257132}
   - component: {fileID: 1238573612331535254}
   - component: {fileID: -2404037241243108100}
+  - component: {fileID: 3318254506707246828}
+  - component: {fileID: 5250199339123624151}
+  - component: {fileID: 4923726748879774182}
   m_Layer: 0
   m_Name: HomingMissile
   m_TagString: Untagged
@@ -104,24 +106,6 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &892613720738257132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892613720738257128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23c3a23105f53a4ca9be700911ad072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pierce: 0
-  shakeIntensity: 2
-  trayParticlesPrefab: {fileID: 198157609410178438, guid: b1dbc666019d1c6458f178a05cbfe64f, type: 3}
-  explosionParticlesPrefab: {fileID: 198037824723107740, guid: 39ba3fd0042ede6468106e9b47915d56, type: 3}
-  explosionSFX: {fileID: 8300000, guid: bdeae835cf196f8488bdb24ed068614e, type: 3}
-  traySFX: {fileID: 0}
 --- !u!50 &1238573612331535254
 Rigidbody2D:
   serializedVersion: 4
@@ -169,3 +153,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3318254506707246828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892613720738257128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29df44fef6038944b97e73832b98f529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
+--- !u!114 &5250199339123624151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892613720738257128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32865e27d17fc643ad807249fe5a10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trayParticlesPrefab: {fileID: 198157609410178438, guid: b1dbc666019d1c6458f178a05cbfe64f, type: 3}
+  explosionParticlesPrefab: {fileID: 198037824723107740, guid: 39ba3fd0042ede6468106e9b47915d56, type: 3}
+--- !u!114 &4923726748879774182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892613720738257128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0793acb060cfd9741abad542450a3db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToSelfDestruct: 4
