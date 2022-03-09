@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 7590326896259858064}
   - component: {fileID: 7590326896259858065}
   - component: {fileID: 8263034410613537650}
+  - component: {fileID: 3965688096169934108}
   - component: {fileID: -8149775935550594303}
   - component: {fileID: 8638895100100875180}
+  - component: {fileID: 2773199351696035924}
   m_Layer: 7
   m_Name: Asteroid
   m_TagString: Environment
@@ -133,6 +135,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2044642, y: 1.3139987}
   m_EdgeRadius: 0
+--- !u!114 &3965688096169934108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590326896259858066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0c516b6c9c39c4bbff74b58abc41cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceshipTargetRadius: 20
+  minPushForce: 5
+  maxPushForce: 10
 --- !u!114 &-8149775935550594303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +175,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  Damage: 1
+--- !u!114 &2773199351696035924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590326896259858066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0793acb060cfd9741abad542450a3db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToSelfDestruct: 10

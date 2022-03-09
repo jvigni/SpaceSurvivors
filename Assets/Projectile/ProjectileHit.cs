@@ -3,7 +3,7 @@
 public class ProjectileHit : MonoBehaviour
 {
     [SerializeField] string targetTag;
-    public float Damage { get; set; }
+    public float Damage;
     public float AOERadius { get; set; }
 
     void OnTriggerEnter2D(Collider2D col)
