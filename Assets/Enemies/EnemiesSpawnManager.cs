@@ -4,7 +4,6 @@ using UnityEngine;
 public class EnemiesSpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject alien1;
-    [SerializeField] RectTransform[] spawnAreas;
 
     private void Awake()
     {
@@ -16,12 +15,6 @@ public class EnemiesSpawnManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    public void TeleportToRndSpawnArea(Transform transform)
-    {
-        var rndAreaIndex = Random.Range(0, spawnAreas.Length);
-        transform.position = GetRndPosFromArea(spawnAreas[rndAreaIndex]);
-    }
-
     IEnumerator SpawnEnemies()
     {
         var wfs = new WaitForSeconds(6);//Random.Range(1, 1));
@@ -30,14 +23,13 @@ public class EnemiesSpawnManager : MonoBehaviour
             var lvl = Provider.XpManager.Level;
             var amountToSpawn = Random.Range(1, lvl);
             for (int i = 0; i < amountToSpawn; i++)
-                for(int j = 0; j < spawnAreas.Length; j++)
-                    SpawnEnemy(spawnAreas[j]);
+                SpawnEnemy();
             
             yield return wfs;
         }
     }
 
-    void SpawnEnemy(RectTransform spawnArea)
+    void SpawnEnemy()
     {
         /*
         float minRadius = 20f;
@@ -47,14 +39,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         float y = Mathf.Sin(angle) * radius;
         var spawnPos = Provider.Spaceship.transform.position + new Vector3(x, y);
         */
-        
-        Instantiate(alien1, GetRndPosFromArea(spawnArea), Quaternion.identity);
-    }
-
-    Vector3 GetRndPosFromArea(RectTransform area)
-    {
-        var x = Random.Range(area.rect.xMin, area.rect.xMax);
-        var y = Random.Range(area.rect.yMin, area.rect.yMax);
-        return (Vector2)area.transform.position + new Vector2(x, y);
+        var spawnPos = Provider.SpawnManager.GetRndSpawnAreaPos();
+        var enemy = Instantiate(alien1, spawnPos, Quaternion.identity);
     }
 }

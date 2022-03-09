@@ -13,7 +13,8 @@ public class EnemyTeleportNearPlayer : MonoBehaviour
 
     void TeleportNearPlayer()
     {
-        Provider.EnemiesSpawnManager.TeleportToRndSpawnArea(transform);
+        var newPos = Provider.SpawnManager.GetRndSpawnAreaPos();
+        transform.position = newPos;
     }
 
     IEnumerator Routine()

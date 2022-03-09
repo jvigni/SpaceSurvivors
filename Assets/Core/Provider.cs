@@ -10,4 +10,5 @@ public class Provider
     public static WeaponsManager WeaponsManager;
     public static XpManager XpManager;
     public static EnemiesSpawnManager EnemiesSpawnManager;
+    public static SpawnAreaManager SpawnManager;
 }
