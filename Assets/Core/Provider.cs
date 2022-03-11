@@ -11,5 +11,5 @@ public class Provider
     public static XpManager XpManager;
     public static EnemiesSpawnManager EnemiesSpawnManager;
     public static SpawnAreaManager SpawnManager;
-    public static TimeManager TimeManager;
+    public static Timer Timer;
 }

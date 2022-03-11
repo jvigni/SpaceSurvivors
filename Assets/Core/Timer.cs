@@ -3,14 +3,14 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmp;
-    int elapsedSeconds;
+    public int ElapsedSeconds { get; private set; }
 
     private void Awake()
     {
-        Provider.TimeManager = this;
+        Provider.Timer = this;
     }
 
     private void Start()
@@ -24,8 +24,8 @@ public class TimeManager : MonoBehaviour
         while (true)
         {
             yield return wfs;
-            elapsedSeconds++;
-            var t = TimeSpan.FromSeconds(elapsedSeconds);
+            ElapsedSeconds++;
+            var t = TimeSpan.FromSeconds(ElapsedSeconds);
             tmp.text = $"{t.Minutes}:{t.Seconds}";
         }
     }
