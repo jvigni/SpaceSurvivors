@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 1699790892627607735, guid: ceff348840a12344f8d9999cbe8eff5c, type: 3}
-  dropPercentage: 50
+  dropPercentage: 75
 --- !u!114 &1354288254126504147
 MonoBehaviour:
   m_ObjectHideFlags: 0

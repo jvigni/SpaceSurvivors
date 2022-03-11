@@ -17,7 +17,7 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        var wfs = new WaitForSeconds(3.5f);//Random.Range(1, 1));
+        var wfs = new WaitForSeconds(3f);//Random.Range(1, 1));
         while (true)
         {
             var lvl = Provider.XpManager.Level;

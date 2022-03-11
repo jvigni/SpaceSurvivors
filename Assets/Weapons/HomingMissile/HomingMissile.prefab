@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bdd4140684f334cb0931fa4a45586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 7
+  movementSpeed: 8
   turningSpeed: 0.5
   findRange: 20
   targetLayer:
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Enemy
   Damage: 10
+  AOERadius: 0
 --- !u!114 &5250199339123624151
 MonoBehaviour:
   m_ObjectHideFlags: 0
