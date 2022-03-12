@@ -23,6 +23,12 @@ public class App : MonoBehaviour
         Provider.UpgradesView = upgradesView;
     }
 
+    private void Start()
+    {
+        var stage = Stages.Stage1();
+        stage.Run();
+    }
+
     private void Update()
     {
         //TODO ONLY FOR TESTING

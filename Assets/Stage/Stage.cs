@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class SpawnEnemyAction : StageAction
 {
     public EnemyID enemyId;
     public float spawnsPerSecond;
+    Coroutine routine;
 
     public SpawnEnemyAction(int startMinute, int finishMinute, EnemyID enemyId, float spawnsPerSecond)
         : base(startMinute, finishMinute)
@@ -14,23 +16,29 @@ public class SpawnEnemyAction : StageAction
 
     public override void Run()
     {
-        Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
+        routine = Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
+    }
+
+    public override void Stop()
+    {
+        Provider.SpawnManager.StopCoroutine(routine);
     }
 }
 
 public abstract class StageAction
 {
-    public int startMinute;
-    public int finishMinute;
+    public int StartMinute;
+    public int FinishMinute;
 
     public StageAction(int startMinute, int finishMinute)
     {
-        this.startMinute = startMinute;
-        this.finishMinute = finishMinute;
+        StartMinute = startMinute;
+        FinishMinute = finishMinute;
     }
 
-    protected float TotalSeconds => (finishMinute - startMinute) * 60;
+    protected float TotalSeconds => (FinishMinute - StartMinute) * 60;
     public abstract void Run();
+    public abstract void Stop();
 }
 
 public class Stage
@@ -43,6 +51,25 @@ public class Stage
         Title = title;
         foreach (StageAction action in actions)
             this.actions.Add(action);
+    }
+
+    public void Run()
+    {
+        var timer = Provider.Timer;
+        timer.Minute += minute => OnNewMinute(minute);
+        timer.Run();
+    }
+
+    void OnNewMinute(int minute)
+    {
+        foreach(StageAction action in actions)
+        {
+            if (action.StartMinute == minute)
+                action.Run();
+
+            if (action.FinishMinute == minute)
+                action.Stop();
+        }
     }
 }
 

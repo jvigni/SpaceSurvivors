@@ -11,12 +11,6 @@ public class EnemyTeleportNearPlayer : MonoBehaviour
         StartCoroutine(Routine());
     }
 
-    void TeleportNearPlayer()
-    {
-        var newPos = Provider.SpawnManager.GetRndSpawnAreaPos();
-        transform.position = newPos;
-    }
-
     IEnumerator Routine()
     {
         var wfs = new WaitForSeconds(intervalCheckSeconds);
@@ -25,7 +19,7 @@ public class EnemyTeleportNearPlayer : MonoBehaviour
             yield return wfs;
             var distanceToPlayer = Vector2.Distance(transform.position, Provider.Spaceship.transform.position);
             if (distanceToPlayer > maxDistance)
-                TeleportNearPlayer();
+                Provider.SpawnManager.TeleportToRndSpawnPos(transform);
         }
     }
 }

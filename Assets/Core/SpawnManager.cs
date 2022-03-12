@@ -31,6 +31,12 @@ public class SpawnManager : MonoBehaviour
         return StartCoroutine(SpawnRoutine(enemyID, spawnsPerSecond, totalSeconds));
     }
 
+    public void TeleportToRndSpawnPos(Transform transform)
+    {
+        var spawnPos = GetRndSpawnPos();
+        transform.position = spawnPos;
+    }
+
     IEnumerator SpawnRoutine(EnemyID enemyId, float spawnsPerSecond, float totalSeconds)
     {
         float elapsedSeconds = 0;

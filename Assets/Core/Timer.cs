@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
         Provider.Timer = this;
     }
 
-    private void Start()
+    public void Run()
     {
         StartCoroutine(ManageTime());
     }
@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
     IEnumerator ManageTime()
     {
         var wfs = new WaitForSeconds(1);
+        Minute?.Invoke(0);
         while (true)
         {
             yield return wfs;
