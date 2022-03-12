@@ -1,45 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
-
-public class SpawnEnemyAction : StageAction
-{
-    public EnemyID enemyId;
-    public float spawnsPerSecond;
-    Coroutine routine;
-
-    public SpawnEnemyAction(int startMinute, int finishMinute, EnemyID enemyId, float spawnsPerSecond)
-        : base(startMinute, finishMinute)
-    {
-        this.enemyId = enemyId;
-        this.spawnsPerSecond = spawnsPerSecond;
-    }
-
-    public override void Run()
-    {
-        routine = Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
-    }
-
-    public override void Stop()
-    {
-        Provider.SpawnManager.StopCoroutine(routine);
-    }
-}
-
-public abstract class StageAction
-{
-    public int StartMinute;
-    public int FinishMinute;
-
-    public StageAction(int startMinute, int finishMinute)
-    {
-        StartMinute = startMinute;
-        FinishMinute = finishMinute;
-    }
-
-    protected float TotalSeconds => (FinishMinute - StartMinute) * 60;
-    public abstract void Run();
-    public abstract void Stop();
-}
 
 public class Stage
 {
@@ -70,15 +29,5 @@ public class Stage
             if (action.FinishMinute == minute)
                 action.Stop();
         }
-    }
-}
-
-public class Stages
-{
-    public static Stage Stage1()
-    {
-        return new Stage("Stage I",
-            new SpawnEnemyAction(0, 1, EnemyID.Alien1, .5f),
-            new SpawnEnemyAction(1, 2, EnemyID.Asteroid, .5f));
     }
 }
