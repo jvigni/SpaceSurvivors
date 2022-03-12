@@ -20,7 +20,6 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] RectTransform[] spawnAreas;
     [SerializeField] List<EnemyData> enemyData;
-    float tickTime = 0.01f;
 
     private void Awake()
     {

@@ -1,45 +1,57 @@
-using System;
-using UnityEngine;
+using System.Collections.Generic;
 
-[Serializable]
-public class SpawnEnemyStageAction
+public class SpawnEnemyAction : StageAction
 {
-    public EnemyID enemyID;
-    public float spawnCooldownSeconds;
+    public EnemyID enemyId;
+    public float spawnsPerSecond;
 
-    public void Trigger()
+    public SpawnEnemyAction(int startMinute, int finishMinute, EnemyID enemyId, float spawnsPerSecond)
+        : base(startMinute, finishMinute)
     {
-        //Como hago si no es MB? necesito corutinas aca..
-        //Usar JOBs?
+        this.enemyId = enemyId;
+        this.spawnsPerSecond = spawnsPerSecond;
     }
 
-    void SpawnEnemy()
+    public override void Run()
     {
-        var spawnPos = Provider.SpawnManager.GetRndSpawnAreaPos();
-        var enemy = Instantiate(alien1, spawnPos, Quaternion.identity);
+        Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
     }
 }
 
 public abstract class StageAction
 {
-    public float startMinute;
-    public float finishMinute;
+    public int startMinute;
+    public int finishMinute;
 
-    public void Tri
+    public StageAction(int startMinute, int finishMinute)
+    {
+        this.startMinute = startMinute;
+        this.finishMinute = finishMinute;
+    }
+
+    protected float TotalSeconds => (finishMinute - startMinute) * 60;
+    public abstract void Run();
 }
 
-[CreateAssetMenu(fileName = "Stage")]
-public class Stage : ScriptableObject
+public class Stage
 {
-    [SerializeField] SpawnAction[] spawnActions;
+    public string Title;
+    List<StageAction> actions = new List<StageAction>();
     
-
+    public Stage(string title, params StageAction[] actions)
+    {
+        Title = title;
+        foreach (StageAction action in actions)
+            this.actions.Add(action);
+    }
 }
 
 public class Stages
 {
-    public Stage Stage1()
+    public static Stage Stage1()
     {
-        return new Stage()
+        return new Stage("Stage I",
+            new SpawnEnemyAction(0, 1, EnemyID.Alien1, .5f),
+            new SpawnEnemyAction(1, 2, EnemyID.Asteroid, .5f));
     }
 }
