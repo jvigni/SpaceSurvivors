@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
- 
+
 public enum EnemyID
 {
     Alien1,
@@ -14,6 +14,15 @@ public class EnemyData
 {
     public EnemyID EnemyId;
     public GameObject Prefab;
+}
+
+public class SpawnData
+{
+    public GameObject prefab;
+    public int maxInstances;
+    public List<GameObject> instances;
+
+    public bool Fullfilled => instances.Count == maxInstances;
 }
 
 public class SpawnManager : MonoBehaviour
@@ -48,6 +57,12 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemy(prefab);
             elapsedSeconds += spawnsPerSecond;
         }
+    }
+
+    public GameObject SpawnEnemy(EnemyID enemyId)
+    {
+        var prefab = GetEnemyPrefab(enemyId);
+        return SpawnEnemy(prefab);
     }
 
     GameObject SpawnEnemy(GameObject prefab)

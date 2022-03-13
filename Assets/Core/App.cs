@@ -25,8 +25,8 @@ public class App : MonoBehaviour
 
     private void Start()
     {
-        var stage = Stages.Stage1();
-        stage.Run();
+        //var stage = Stages.Stage1();
+        //stage.Run();
     }
 
     private void Update()

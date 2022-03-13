@@ -26,7 +26,7 @@ public class Stage
             if (action.StartMinute == second / 60f)
                 action.Run();
 
-            if (action.FinishMinute == second / 60f)
+            if (action.EndMinute == second / 60f)
                 action.Stop();
         }
     }
