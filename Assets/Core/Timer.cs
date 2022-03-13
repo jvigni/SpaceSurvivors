@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmp;
     public int ElapsedSeconds { get; private set; }
     public event Action<int> Minute;
+    public event Action<int> Second;
 
     private void Awake()
     {
@@ -23,10 +24,12 @@ public class Timer : MonoBehaviour
     {
         var wfs = new WaitForSeconds(1);
         Minute?.Invoke(0);
+        Second?.Invoke(0);
         while (true)
         {
             yield return wfs;
             ElapsedSeconds++;
+            Second?.Invoke(ElapsedSeconds);
             if (ElapsedSeconds % 60 == 0) Minute?.Invoke(ElapsedSeconds / 60);
             DrawActualTime();
         }

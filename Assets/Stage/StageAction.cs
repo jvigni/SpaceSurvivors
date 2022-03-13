@@ -1,15 +1,15 @@
 ﻿public abstract class StageAction
 {
-    public int StartMinute;
-    public int FinishMinute;
+    public float StartMinute;
+    public float FinishMinute;
 
-    public StageAction(int startMinute, int finishMinute)
+    public StageAction(float startMinute, float finishMinute)
     {
         StartMinute = startMinute;
         FinishMinute = finishMinute;
     }
 
-    protected float TotalSeconds => (FinishMinute - StartMinute) * 60;
+    protected float TotalSeconds => (FinishMinute - StartMinute) * 60f;
     public abstract void Run();
     public abstract void Stop();
 }

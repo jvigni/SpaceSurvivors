@@ -6,7 +6,7 @@ public class SpawnEnemyAction : StageAction
     public float spawnsPerSecond;
     Coroutine routine;
 
-    public SpawnEnemyAction(int startMinute, int finishMinute, EnemyID enemyId, float spawnsPerSecond)
+    public SpawnEnemyAction(float startMinute, float finishMinute, EnemyID enemyId, float spawnsPerSecond)
         : base(startMinute, finishMinute)
     {
         this.enemyId = enemyId;

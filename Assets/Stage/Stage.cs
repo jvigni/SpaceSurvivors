@@ -15,18 +15,18 @@ public class Stage
     public void Run()
     {
         var timer = Provider.Timer;
-        timer.Minute += minute => OnNewMinute(minute);
+        timer.Second += second => CheckActions(second);
         timer.Run();
     }
 
-    void OnNewMinute(int minute)
+    void CheckActions(int second)
     {
         foreach(StageAction action in actions)
         {
-            if (action.StartMinute == minute)
+            if (action.StartMinute == second / 60f)
                 action.Run();
 
-            if (action.FinishMinute == minute)
+            if (action.FinishMinute == second / 60f)
                 action.Stop();
         }
     }
