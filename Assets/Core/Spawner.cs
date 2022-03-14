@@ -2,6 +2,7 @@
 
 public class Spawner : MonoBehaviour
 {
+    public bool enabled;
     public EnemyID enemyId;
     public int maxInstances;
 
@@ -26,6 +27,7 @@ public class Spawner : MonoBehaviour
 
     void OnEnemyDeath()
     {
-        SpawnEnemy();
+        if(isActiveAndEnabled)
+            SpawnEnemy();
     }
 }

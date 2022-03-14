@@ -1572,6 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c022cef98b13c4f979864be50cf022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 0
   enemyId: 0
   maxInstances: 100
 --- !u!4 &1262832973
