@@ -27,6 +27,9 @@ public class App : MonoBehaviour
     {
         //var stage = Stages.Stage1();
         //stage.Run();
+
+        var spawner = Spawner.New(EnemyID.Alien1, 2);
+        spawner.MaxInstances += 5;
     }
 
     private void Update()

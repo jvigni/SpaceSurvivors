@@ -3,21 +3,30 @@ using UnityEngine;
  
 public class Spawner : MonoBehaviour
 {
-    public EnemyID enemyId;
-    public int maxInstances;
+    EnemyID enemyId;
     List<GameObject> entities = new List<GameObject>();
-
-    private void Start()
+    int maxInstances;
+    public int MaxInstances
     {
-        Run(enemyId, maxInstances);    
+        get { return maxInstances; }
+        set 
+        {
+            int increment = value - maxInstances;
+            if(increment > 0)
+                for (int i = 0; i < increment; i++)
+                    SpawnEnemy();
+
+            maxInstances = value;
+        }
     }
 
-    public void Run(EnemyID enemyId, int maxInstances)
+    public static Spawner New(EnemyID enemyId, int maxInstances)
     {
-        this.maxInstances = maxInstances;
-        this.enemyId = enemyId;
-        for (int i = 0; i < maxInstances; i++)
-            SpawnEnemy();
+        var spawnerGO = new GameObject($"Spawner: {enemyId}");
+        Spawner spawnerComponent = spawnerGO.AddComponent<Spawner>();
+        spawnerComponent.enemyId = enemyId;
+        spawnerComponent.MaxInstances = maxInstances;
+        return spawnerComponent;
     }
 
     void SpawnEnemy()
@@ -30,7 +39,6 @@ public class Spawner : MonoBehaviour
     void OnEnemyDeath(Lifeform lifeform)
     {
         entities.Remove(lifeform.gameObject);
-
         SpawnEnemy();
     }
 
