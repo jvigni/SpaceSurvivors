@@ -1,10 +1,11 @@
-﻿using UnityEngine;
-
+﻿using System.Collections.Generic;
+using UnityEngine;
+ 
 public class Spawner : MonoBehaviour
 {
-    public bool enabled;
     public EnemyID enemyId;
     public int maxInstances;
+    List<GameObject> entities = new List<GameObject>();
 
     private void Start()
     {
@@ -22,12 +23,20 @@ public class Spawner : MonoBehaviour
     void SpawnEnemy()
     {
         var enemy = Provider.SpawnManager.SpawnEnemy(enemyId);
-        enemy.GetComponent<Lifeform>().OnDeath += () => OnEnemyDeath();
+        enemy.GetComponent<Lifeform>().OnDeath += OnEnemyDeath;
+        entities.Add(enemy);
     }
 
-    void OnEnemyDeath()
+    void OnEnemyDeath(Lifeform lifeform)
     {
-        if(isActiveAndEnabled)
-            SpawnEnemy();
+        entities.Remove(lifeform.gameObject);
+
+        SpawnEnemy();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (GameObject entity in entities)
+           entity.GetComponent<Lifeform>().OnDeath -= OnEnemyDeath;
     }
 }

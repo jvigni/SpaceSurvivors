@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Lifeform : MonoBehaviour
 {
-    public event System.Action OnDeath;
+    public event Action<Lifeform> OnDeath;
     [SerializeField] float startingHealth = 100000f;
     public float ActualHealth { get; private set; }
 
@@ -35,7 +37,7 @@ public class Lifeform : MonoBehaviour
 
     void HandleDeath()
     {
-        OnDeath?.Invoke();
+        OnDeath?.Invoke(this);
         Destroy(gameObject);
     }
 }

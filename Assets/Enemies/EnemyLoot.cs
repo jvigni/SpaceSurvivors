@@ -7,7 +7,7 @@ public class EnemyLoot : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Lifeform>().OnDeath += TryDropLoot;
+        GetComponent<Lifeform>().OnDeath += _ => TryDropLoot();
     }
 
     void TryDropLoot()

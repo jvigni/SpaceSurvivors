@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enabled: 0
   enemyId: 0
-  maxInstances: 100
+  maxInstances: 3
 --- !u!4 &1262832973
 Transform:
   m_ObjectHideFlags: 0
