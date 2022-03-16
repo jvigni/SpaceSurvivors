@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Environment
   - Gem
+  - OutsideArea
   layers:
   - Default
   - TransparentFX

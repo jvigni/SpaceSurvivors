@@ -17,4 +17,13 @@ public class Asteroid : MonoBehaviour
         movement.Push(dir, force);
         movement.RotateTowards(Provider.Spaceship.transform);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("OutsideArea"))
+        {
+            Destroy(gameObject);
+            Provider.SpawnManager.SpawnEnemy(EnemyId.Asteroid);
+        }
+    }
 }

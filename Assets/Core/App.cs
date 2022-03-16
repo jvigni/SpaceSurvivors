@@ -25,10 +25,8 @@ public class App : MonoBehaviour
 
     private void Start()
     {
-        //var stage = Stages.Stage1();
-        //stage.Run();
-        Provider.SpawnManager.IncreaseSpawner(EnemyId.Alien1, 3);
-        Provider.SpawnManager.IncreaseSpawner(EnemyId.Alien1, 1);
+        var stage = Stages.Stage1();
+        stage.Run();
     }
 
     private void Update()

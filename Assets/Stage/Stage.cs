@@ -24,10 +24,7 @@ public class Stage
         foreach(StageAction action in actions)
         {
             if (action.StartMinute == second / 60f)
-                action.Run();
-
-            if (action.EndMinute == second / 60f)
-                action.Stop();
+                action.Trigger();
         }
     }
 }
