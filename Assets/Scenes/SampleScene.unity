@@ -1907,7 +1907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpBarSlider: {fileID: 656807466}
   baseXpRequirment: 5
-  xpIncrementPerLevel: 3
+  xpIncrementPerLevel: 6
   Level: 1
 --- !u!1 &1873754976
 GameObject:
