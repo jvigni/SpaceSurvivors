@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum EnemyID
+public enum EnemyId
 {
     Alien1,
     Asteroid,
@@ -12,32 +12,43 @@ public enum EnemyID
 [System.Serializable]
 public class EnemyData
 {
-    public EnemyID EnemyId;
+    public EnemyId EnemyId;
     public GameObject Prefab;
-}
-
-public class SpawnData
-{
-    public GameObject prefab;
-    public int maxInstances;
-    public List<GameObject> instances;
-
-    public bool Fullfilled => instances.Count == maxInstances;
 }
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] RectTransform[] spawnAreas;
     [SerializeField] List<EnemyData> enemyData;
+    List<Spawner> spawners = new List<Spawner>();
 
     private void Awake()
     {
         Provider.SpawnManager = this;
     }
 
-    public Coroutine RunSpawnRoutine(EnemyID enemyID, float spawnsPerSecond, float totalSeconds)
+    public void IncreaseSpawner(EnemyId enemyId, int increaseAmount)
     {
-        return StartCoroutine(SpawnRoutine(enemyID, spawnsPerSecond, totalSeconds));
+        var spawner = GetSpawner(enemyId);
+        if (spawner == null)
+            spawner = SpawnSpawner(enemyId);
+
+        spawner.MaxInstances += increaseAmount;
+    }
+
+    Spawner SpawnSpawner(EnemyId enemyId)
+    {
+        var spawner = Spawner.New(enemyId);
+        spawners.Add(spawner);
+        return spawner;
+    }
+
+    Spawner GetSpawner(EnemyId enemyId)
+    {
+        foreach (Spawner spawner in spawners)
+            if (spawner.EnemyId == enemyId)
+                return spawner;
+        return null;
     }
 
     public void TeleportToRndSpawnPos(Transform transform)
@@ -46,20 +57,7 @@ public class SpawnManager : MonoBehaviour
         transform.position = spawnPos;
     }
 
-    IEnumerator SpawnRoutine(EnemyID enemyId, float spawnsPerSecond, float totalSeconds)
-    {
-        float elapsedSeconds = 0;
-        var wfs = new WaitForSeconds(spawnsPerSecond);
-        var prefab = GetEnemyPrefab(enemyId);
-        while (elapsedSeconds < totalSeconds)
-        {
-            yield return wfs;
-            SpawnEnemy(prefab);
-            elapsedSeconds += spawnsPerSecond;
-        }
-    }
-
-    public GameObject SpawnEnemy(EnemyID enemyId)
+    public GameObject SpawnEnemy(EnemyId enemyId)
     {
         var prefab = GetEnemyPrefab(enemyId);
         return SpawnEnemy(prefab);
@@ -71,7 +69,7 @@ public class SpawnManager : MonoBehaviour
         return Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 
-    GameObject GetEnemyPrefab(EnemyID id)
+    GameObject GetEnemyPrefab(EnemyId id)
     {
         return enemyData
                 .Where(enemyData => enemyData.EnemyId.Equals(id))

@@ -3,7 +3,7 @@ using UnityEngine;
  
 public class Spawner : MonoBehaviour
 {
-    EnemyID enemyId;
+    public EnemyId EnemyId;
     List<GameObject> entities = new List<GameObject>();
     int maxInstances;
     public int MaxInstances
@@ -20,18 +20,17 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public static Spawner New(EnemyID enemyId, int maxInstances)
+    public static Spawner New(EnemyId enemyId)
     {
         var spawnerGO = new GameObject($"Spawner: {enemyId}");
         Spawner spawnerComponent = spawnerGO.AddComponent<Spawner>();
-        spawnerComponent.enemyId = enemyId;
-        spawnerComponent.MaxInstances = maxInstances;
+        spawnerComponent.EnemyId = enemyId;
         return spawnerComponent;
     }
 
     void SpawnEnemy()
     {
-        var enemy = Provider.SpawnManager.SpawnEnemy(enemyId);
+        var enemy = Provider.SpawnManager.SpawnEnemy(EnemyId);
         enemy.GetComponent<Lifeform>().OnDeath += OnEnemyDeath;
         entities.Add(enemy);
     }

@@ -2,11 +2,11 @@
 
 public class SpawnEnemyAction : StageAction
 {
-    public EnemyID enemyId;
+    public EnemyId enemyId;
     public float spawnsPerSecond;
     Coroutine routine;
 
-    public SpawnEnemyAction(float startMinute, float endMinute, EnemyID enemyId, float spawnsPerSecond)
+    public SpawnEnemyAction(float startMinute, float endMinute, EnemyId enemyId, float spawnsPerSecond)
         : base(startMinute, endMinute)
     {
         this.enemyId = enemyId;
@@ -15,7 +15,8 @@ public class SpawnEnemyAction : StageAction
 
     public override void Run()
     {
-        routine = Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
+        //routine = Provider.SpawnManager.RunSpawnRoutine(enemyId, spawnsPerSecond, TotalSeconds);
+        //TODO
     }
 
     public override void Stop()
