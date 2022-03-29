@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownSecs: 0.3
   Icon: {fileID: 21300000, guid: fce22043d9eca5e4881e25f9b387faba, type: 3}
+  FXPrefab: {fileID: 5091131318167696765, guid: 5a69c44f3a3a08a45899803215585d19, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class ElectricFieldWeapon : Weapon
 {
+    [SerializeField] ParticleSystem FXPrefab;
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float radius;
     [SerializeField] int damage;
+    ParticleSystem ps;
 
     public override WeaponID ID => WeaponID.ElectricField;
 
@@ -16,7 +18,14 @@ public class ElectricFieldWeapon : Weapon
 
     public override void OnTurnOn()
     {
-        //Start VFX
+        ps = Instantiate(FXPrefab);
+        var shape = ps.shape;
+        shape.radius = radius;
+    }
+
+    private void Update()
+    {
+        ps.transform.position = Provider.Spaceship.transform.position;
     }
 
     public override IEnumerator DoOnCooldownFinish()
