@@ -49,5 +49,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  radius: 5
+  radius: 4
   damage: 1
+  lv2DmgIncrease: 1
+  lv3RadiusIncrease: 2
+  lv4CooldownRed: 0.15
