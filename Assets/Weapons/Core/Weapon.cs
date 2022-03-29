@@ -9,6 +9,7 @@ public enum WeaponID
     DumDum,
     Flamethrower,
     RPG,
+    ElectricField,
 }
 
 public class WeaponLevelData
@@ -55,8 +56,13 @@ public abstract class Weapon : MonoBehaviour
 
     public void TurnOn()
     {
-        Cooldown = new Cooldown(cooldownSecs, () => DoOnCooldownFinish(), repeat: true);
-        Cooldown.Start();
+        OnTurnOn();
+
+        if (cooldownSecs > 0)
+        {
+            Cooldown = new Cooldown(cooldownSecs, () => DoOnCooldownFinish(), repeat: true);
+            Cooldown.Start();
+        }
     }
 
     public void TurnOff()
@@ -65,4 +71,5 @@ public abstract class Weapon : MonoBehaviour
     }
 
     public abstract IEnumerator DoOnCooldownFinish();
+    public virtual void OnTurnOn() { }
 }

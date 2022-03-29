@@ -3,7 +3,7 @@
 public class ProjectileHit : MonoBehaviour
 {
     [SerializeField] string targetTag;
-    public float Damage;
+    public int Damage;
     public float AOERadius;
 
     void OnTriggerEnter2D(Collider2D col)
@@ -40,6 +40,6 @@ public class ProjectileHit : MonoBehaviour
     {
         var lifeform = target.GetComponent<Lifeform>();
         if (lifeform) 
-            lifeform.ReceiveDamage(new DmgInfo(Damage));
+            lifeform.ReceiveDamage(Damage);
     }
 }

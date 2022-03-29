@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class FlamethrowerWeapon : Weapon
 {
-    [SerializeField] float baseDamage;
+    [SerializeField] int baseDamage;
     [SerializeField] float baseFiringSeconds;
-    [SerializeField] float lv2DamageIncrease;
+    [SerializeField] int lv2DamageIncrease;
     [SerializeField] float lv3ExtraFiringSeconds;
     [SerializeField] float lv4CooldownReduction;
-    float damage;
+    int damage;
     float firingSeconds;
     bool firing;
 
@@ -41,7 +41,7 @@ public class FlamethrowerWeapon : Weapon
 
         var lifeform = collision.gameObject.GetComponent<Lifeform>();
         if (lifeform)
-            lifeform.ReceiveDamage(new DmgInfo(damage));
+            lifeform.ReceiveDamage(damage);
     }
 
     public override IEnumerator DoOnCooldownFinish()

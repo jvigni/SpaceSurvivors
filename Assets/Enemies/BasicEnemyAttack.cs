@@ -4,7 +4,7 @@ using UnityEngine;
 //TODO: Ahora hace 1 hit unico por colision. fixear esto (Tiene que continuar atacando si sigue en la misma colision)
 public class BasicEnemyAttack : MonoBehaviour
 {
-    [SerializeField] DmgInfo damage;
+    [SerializeField] int damage;
     bool canAttack = true;
 
     private void OnCollisionEnter2D(Collision2D collision)
