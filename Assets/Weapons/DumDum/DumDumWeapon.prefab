@@ -46,7 +46,7 @@ MonoBehaviour:
   cooldownSecs: 1.2
   Icon: {fileID: 21300000, guid: a11df8840403437439d4ac9dca47680e, type: 3}
   damage: 10
-  projectilePrefab: {fileID: 2319871057651355956, guid: 0f5dc5578c199ce42b5a128167c624da, type: 3}
+  projectilePrefab: {fileID: 2319871057651355959, guid: 0f5dc5578c199ce42b5a128167c624da, type: 3}
   throwForce: 15
   lv3CooldownRed: 0.4
   lv5CooldownRed: 0.4
