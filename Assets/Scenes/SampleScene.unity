@@ -2082,7 +2082,7 @@ Transform:
   - {fileID: 1828692081}
   - {fileID: 1632965539}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1935771649
 GameObject:
@@ -2313,7 +2313,7 @@ Transform:
   m_Children:
   - {fileID: 5443234856034209376}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &868403116172499851
 MonoBehaviour:
@@ -2344,7 +2344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsPrefab:
-  - {fileID: 5486367844877827885, guid: 3974c08dc556c824fb08d004faad563c, type: 3}
+  - {fileID: 6685730990808239974, guid: 26913ac064c7ac14bb0fef12f707d583, type: 3}
   EquipedWeapons: []
 --- !u!114 &868403116172499854
 MonoBehaviour:
