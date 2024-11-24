@@ -2331,7 +2331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914909379}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2508,7 +2508,7 @@ GameObject:
   - component: {fileID: 868403116172499845}
   - component: {fileID: 2314105876385443755}
   m_Layer: 0
-  m_Name: Spaceship
+  m_Name: SPACESHIP
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
