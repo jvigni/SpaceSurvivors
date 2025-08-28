@@ -1871,7 +1871,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2480,7 +2480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: maxSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: turnFactor
@@ -2493,7 +2493,7 @@ PrefabInstance:
     - target: {fileID: 8398251797320734946, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: db451e6b914f6f54fa77f89029b26268, type: 3}
+      objectReference: {fileID: 21300000, guid: 8d3e80e9e0587fd418e1f029a7462934, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
 --- !u!61 &5891205915975843208
