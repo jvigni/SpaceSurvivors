@@ -2480,7 +2480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: maxSpeed
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: turnFactor
@@ -2488,7 +2488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: driftFactor
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8398251797320734946, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: m_Sprite
