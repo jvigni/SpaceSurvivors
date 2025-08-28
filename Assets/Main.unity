@@ -1871,7 +1871,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2423,6 +2423,18 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3888471431619679257, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888471431619679257, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888471431619679257, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888471431619679257, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
       objectReference: {fileID: 0}
@@ -2472,12 +2484,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: turnFactor
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8154654167911554445, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
       propertyPath: driftFactor
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 8398251797320734946, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db451e6b914f6f54fa77f89029b26268, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b990c2d3948a0841b98f48cef2ed65d, type: 3}
 --- !u!61 &5891205915975843208
