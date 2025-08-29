@@ -6,6 +6,7 @@ public class SpaceshipMovement : MonoBehaviour
     [SerializeField] float accelerationFactor, turnFactor, driftFactor, maxSpeed;
     float accelerationInput, steeringInput, rotationAngle, velocityVsUp;
     Rigidbody2D rb;
+    [SerializeField] ParticleSystem trailParticleSystem;
 
     public void SetInputVector(Vector2 inputVector)
     {
@@ -57,6 +58,7 @@ public class SpaceshipMovement : MonoBehaviour
          
         Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
         rb.AddForce(engineForceVector, ForceMode2D.Force);
+
     }
 
     void ApplySteering()
